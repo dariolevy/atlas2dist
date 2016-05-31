@@ -1,0 +1,41 @@
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>UI</h3>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Editar UI</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <br>
+            <form id="form-ui" name="formUi" novalidate class="form-horizontal form-label-left" ng-submit="formUi.$valid && edit()">
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12"> Nombre </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" class="form-control col-md-7 col-xs-12" ng-model="ui.nombre">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nivel">Nivel</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select class="form-control" ng-model="mapa.nivel">
+                            <option ng-repeat="nivel in [1,2,3,4,5]" ng-selected="mapa.nivel == nivel">{{nivel}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <button class="btn btn-success" ng-disabled="saving">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

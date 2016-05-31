@@ -1,0 +1,182 @@
+﻿<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Destacamento</h3>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Nuevo destacamento</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <br>
+            <form id="form-destacamento" name="formDestacamento" novalidate class="form-horizontal form-label-left" ng-submit="formDestacamento.$valid && add()">
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre">
+                        Nombre <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" id="nombre" required="required" class="form-control col-md-7 col-xs-12" data-parsley-id="nombre" ng-model="destacamento.nombre">
+                        <ul class="parsley-errors-list" id="parsley-id-nombre"></ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="descripcion">Descripción</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <textarea name="descripcion" id="descripcion" class="form-control col-md-7 col-xs-12" ng-model="destacamento.descripcion"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ataque">
+                        Ataque
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="ataque" class="form-control col-md-7 col-xs-12" ng-model="destacamento.ataque">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="escudo">
+                        Escudo
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="escudo" class="form-control col-md-7 col-xs-12" ng-model="destacamento.escudo">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="efectividadAtaque">
+                        Efectividad de Ataque
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="efectividadAtaque" class="form-control col-md-7 col-xs-12" ng-model="destacamento.efectividadAtaque">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="vida">
+                        Vida
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="vida" class="form-control col-md-7 col-xs-12" ng-model="destacamento.vida">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="velocidad">
+                        Velocidad
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="velocidad" class="form-control col-md-7 col-xs-12" ng-model="destacamento.velocidad">
+                    </div>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <h3> Costo </h3>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 form-inline" style="margin-top:10px;" ng-if="recursosCosto.length > 0">
+                        <div class="form-group">
+                            <label>Recurso</label>
+                            <select class="form-control" ng-model="costo.recurso">
+                                <option ng-repeat="recurso in recursosCosto" value="{{recurso.id}}">{{recurso.nombre}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Valor</label>
+                            <input type="number" class="form-control" ng-model="costo.valor">
+                        </div>
+                        <div class="form-group">
+                            <label>Incremento de nivel</label>
+                            <input type="number" step="0,01" class="form-control" ng-model="costo.incrementoNivel">
+                        </div>
+                        <a class="btn btn-default" style="margin:0;" ng-click="addRelation('costo')"><i class="fa fa-save"></i></a>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-xs-12 form-inline" ng-repeat="c in costos" style="margin-top:10px;">
+                        <div class="form-group">
+                            <label>Recurso</label>
+                            <input type="text" class="form-control" value="{{c.nombreRecurso}}" disabled="disabled">
+                        </div>
+                        <div class="form-group">
+                            <label>Valor</label>
+                            <input type="text" class="form-control" value="{{c.valor}}" disabled="disabled">
+                        </div>
+                        <div class="form-group">
+                            <label>Incremento de nivel</label>
+                            <input type="text" class="form-control" value="{{c.incrementoNivel}}" disabled="disabled">
+                        </div>
+                        <a class="btn btn-default" style="margin:0;" ng-click="removeRelation('costo', $index)"><i class="fa fa-remove"></i></a>
+                    </div>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <h3> Capacidad </h3>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 form-inline" style="margin-top:10px;" ng-if="recursosCapacidad.length > 0">
+                        <div class="form-group">
+                            <label>Recurso</label>
+                            <select class="form-control" ng-model="capacidad.recurso">
+                                <option ng-repeat="recurso in recursosCapacidad" value="{{recurso.id}}">{{recurso.nombre}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Valor</label>
+                            <input type="number" class="form-control" ng-model="capacidad.valor">
+                        </div>
+                        <div class="form-group">
+                            <label>Incremento de nivel</label>
+                            <input type="number" step="0,01" class="form-control" ng-model="capacidad.incrementoNivel">
+                        </div>
+                        <a class="btn btn-default" style="margin:0;" ng-click="addRelation('capacidad')"><i class="fa fa-save"></i></a>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-xs-12 form-inline" ng-repeat="ca in capacidades" style="margin-top:10px;">
+                        <div class="form-group">
+                            <label>Recurso</label>
+                            <input type="text" class="form-control" value="{{ca.nombreRecurso}}" disabled="disabled">
+                        </div>
+                        <div class="form-group">
+                            <label>Valor</label>
+                            <input type="text" class="form-control" value="{{ca.valor}}" disabled="disabled">
+                        </div>
+                        <div class="form-group">
+                            <label>Incremento de nivel</label>
+                            <input type="text" class="form-control" value="{{ca.incrementoNivel}}" disabled="disabled">
+                        </div>
+                        <a class="btn btn-default" style="margin:0;" ng-click="removeRelation('capacidad', $index)"><i class="fa fa-remove"></i></a>
+                    </div>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <a href="#/destacamento" class="btn btn-primary">Cancelar</a>
+                        <button class="btn btn-success" ng-disabled="saving">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- form validation -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#form-destacamento .btn-success').on('click', function() {
+      $('#form-destacamento').parsley().validate();
+      validateFront();
+    });
+
+    var validateFront = function() {
+      if (true === $('#form-destacamento').parsley().isValid()) {
+        $('.bs-callout-info').removeClass('hidden');
+        $('.bs-callout-warning').addClass('hidden');
+      } else {
+        $('.bs-callout-info').addClass('hidden');
+        $('.bs-callout-warning').removeClass('hidden');
+      }
+    };
+  });
+</script>
+<!-- /form validation -->

@@ -1,0 +1,9 @@
+.content-wrapper,
+.right-side,
+.main-footer {
+  margin-left: 0;
+}
+
+.main-header > .navbar {
+  margin-left: 0;
+}

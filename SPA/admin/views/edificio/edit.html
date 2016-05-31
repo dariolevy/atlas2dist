@@ -1,0 +1,96 @@
+﻿<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Edificio</h3>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Editar edificio</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <br>
+            <form id="form-edificio" name="formEdificio" novalidate class="form-horizontal form-label-left" ng-submit="formEdificio.$valid && edit()">
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre">
+                        Nombre <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" id="nombre" required="required" class="form-control col-md-7 col-xs-12" data-parsley-id="nombre" ng-model="edificio.nombre" value="{{edificio.nombre}}">
+                        <ul class="parsley-errors-list" id="parsley-id-nombre"></ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="descripcion">Descripción</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <textarea name="descripcion" id="descripcion" class="form-control col-md-7 col-xs-12" ng-model="edificio.descripcion">{{edificio.descripcion}}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ataque">
+                        Ataque
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="ataque" class="form-control col-md-7 col-xs-12" ng-model="edificio.ataque" value="{{edificio.ataque}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="escudo">
+                        Escudo
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="escudo" class="form-control col-md-7 col-xs-12" ng-model="edificio.escudo" value="{{edificio.escudo}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="efectividadAtaque">
+                        Efectividad de Ataque
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="efectividadAtaque" class="form-control col-md-7 col-xs-12" ng-model="edificio.efectividadAtaque" value="{{edificio.efectividadAtaque}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="vida">
+                        Vida
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="vida" class="form-control col-md-7 col-xs-12" ng-model="edificio.vida" value="{{edificio.vida}}">
+                    </div>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <a href="#/edificio" class="btn btn-primary">Cancelar</a>
+                        <button class="btn btn-success" ng-disabled="saving">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- form validation -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#form-edificio .btn-success').on('click', function() {
+      $('#form-edificio').parsley().validate();
+      validateFront();
+    });
+
+    var validateFront = function() {
+      if (true === $('#form-edificio').parsley().isValid()) {
+        $('.bs-callout-info').removeClass('hidden');
+        $('.bs-callout-warning').addClass('hidden');
+      } else {
+        $('.bs-callout-info').addClass('hidden');
+        $('.bs-callout-warning').removeClass('hidden');
+      }
+    };
+  });
+</script>
+<!-- /form validation -->

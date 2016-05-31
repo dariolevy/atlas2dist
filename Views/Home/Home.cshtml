@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Inicio";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Bienvenido a Orgame
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="box">
+
+        <div class="box-body">
+            Para empezar a jugar @Html.ActionLink("Inicia Sesion", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-lg btn-danger" })
+            o @Html.ActionLink("Registrate", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-lg btn-success" })
+        </div>
+
+    </div>
+    <!-- /.box -->
+
+</section>
+<!-- /.content -->

@@ -1,0 +1,80 @@
+﻿<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Dependencia</h3>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Nueva dependencia</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <br>
+            <form id="form-dependencia" name="formDependencia" novalidate class="form-horizontal form-label-left" ng-submit="formDependencia.$valid && add()">
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="padre">
+                        Unidad <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select class="form-control" id="padre" ng-model="dependencia.padreId" required="required">
+                            <option ng-repeat="producto in productos" value="{{producto.id}}">{{producto.nombre}}</option>
+                        </select>
+                        <ul class="parsley-errors-list" id="parsley-id-padre"></ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="hijo">
+                        Depende <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <select class="form-control" id="hijo" ng-model="dependencia.hijoId" required">
+                            <option ng-repeat="producto in productos" value="{{producto.id}}">{{producto.nombre}}</option>
+                        </select>
+                        <ul class="parsley-errors-list" id="parsley-id-hijo"></ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nivel">
+                        Nivel <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" id="nivel" class="form-control col-md-7 col-xs-12" ng-model="dependencia.nivel" required="required">
+                        <ul class="parsley-errors-list" id="parsley-id-nivel"></ul>
+                    </div>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <a href="#/dependencia" class="btn btn-primary">Cancelar</a>
+                        <button class="btn btn-success" ng-disabled="saving">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- form validation -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#form-dependencia .btn-success').on('click', function() {
+      $('#form-dependencia').parsley().validate();
+      validateFront();
+    });
+
+    var validateFront = function() {
+      if (true === $('#form-dependencia').parsley().isValid()) {
+        $('.bs-callout-info').removeClass('hidden');
+        $('.bs-callout-warning').addClass('hidden');
+      } else {
+        $('.bs-callout-info').addClass('hidden');
+        $('.bs-callout-warning').removeClass('hidden');
+      }
+    };
+  });
+</script>
+<!-- /form validation -->

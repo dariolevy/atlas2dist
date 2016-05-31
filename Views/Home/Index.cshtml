@@ -1,0 +1,183 @@
+﻿@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Orgame</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="~/Content/front/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Content/front/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins -->
+    <link rel="stylesheet" href="~/Content/front/css/skins/skin-blue.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <title>Orgame</title>
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini layout-boxed sidebar-collapse" ng-app="atlas2-juego">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="#/" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>O</b></span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>O</b>rgame</span>
+            </a>
+
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+
+                <!-- Sidebar toggle button-->
+                <a href="#/" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+
+                        <!-- Messages: style can be found in dropdown.less-->
+                        <li class="dropdown messages-menu">
+                            <a class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="label label-success">4</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">You have 1 messages</li>
+                                <li>
+                                    <!-- inner menu: contains the actual data -->
+                                    <ul class="menu">
+                                        <!-- start message -->
+                                        <li>
+                                            <a>
+                                                <div class="pull-left">
+                                                    <img src="~/Content/front/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                </div>
+                                                <h4>
+                                                    Support Team
+                                                    <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                                </h4>
+                                                <p>Why not buy a new awesome theme?</p>
+                                            </a>
+                                        </li>
+                                        <!-- end message -->
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+
+            </nav>
+        </header>
+
+        <!-- =============================================== -->
+        <!-- Left side column. contains the sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li><a href="#/"><i class="fa fa-home"></i> <span>Resumen</span></a></li>
+                    <li><a href="#/edificio"><i class="fa fa-building"></i> <span>Edificios</span></a></li>
+                    <li><a href="#/destacamento"><i class="fa fa-paper-plane"></i> <span>Destacamento</span></a></li>
+                    <li><a href="#/investigacion"><i class="fa fa-flask"></i> <span>Investigaciones</span></a></li>
+                    <li><a href="#/zona"><i class="fa fa-map"></i> <span>Zona</span></a></li>
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- =============================================== -->
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+
+                    <atlas2-recurso></atlas2-recurso>
+
+                    <atlas2-recurso></atlas2-recurso>
+
+                    <atlas2-recurso></atlas2-recurso>
+
+                    <atlas2-recurso></atlas2-recurso>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12" ng-view>
+
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+        <!-- /.content-wrapper -->
+
+        <footer class="main-footer">
+            <strong>Copyright &copy; Atlas2.</strong> All rights reserved.
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+
+    <script src="~/Scripts/front/js/angular.min.js"></script>
+    <script src="~/Scripts/front/js/angular-route.min.js"></script>
+
+    <!-- jQuery 2.2.0 -->
+    <script src="~/Scripts/front/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="~/Content/front/bootstrap/js/bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="~/Scripts/front/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/Scripts/front/plugins/fastclick/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Scripts/front/js/app.min.js"></script>
+    <script src="~/Scripts/front/js/custom.js"></script>
+
+    <!-- app -->
+    <script src="~/SPA/front/app.js"></script>
+
+    <!-- services -->
+    <!-- <script src="app/services/home.js"></script> -->
+    <!-- directives -->
+    <script src="~/SPA/front/directives/recurso.js"></script>
+    <script src="~/SPA/front/directives/unidad.js"></script>
+    <script src="~/SPA/front/directives/unidad-construccion.js"></script>
+
+    <!-- controllers -->
+    <script src="~/SPA/front/controllers/home.js"></script>
+    <script src="~/SPA/front/controllers/zona.js"></script>
+    <script src="~/SPA/front/controllers/edificio.js"></script>
+    <script src="~/SPA/front/controllers/destacamento.js"></script>
+    <script src="~/SPA/front/controllers/investigacion.js"></script>
+
+</body>
+
+</html>
