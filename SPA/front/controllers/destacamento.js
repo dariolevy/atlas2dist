@@ -1,13 +1,9 @@
 (function () {
     'use strict';
-    angular.module('atlas2-juego').controller('destacamentoCtrl', ['$scope', 'jugadorDestacamentoService', destacamentoCtrl]);
+    angular.module('atlas2-juego').controller('destacamentoCtrl', ['$scope', destacamentoCtrl]);
 
-    function destacamentoCtrl($scope, jugadorDestacamentoService) {
-        $scope.destacamentos = null;
-
-        jugadorDestacamentoService.getAllDestacamentos().then(function (data) {
-            $scope.destacamentos = data;
-        });
+    function destacamentoCtrl($scope) {
+        
     }
 
 })();

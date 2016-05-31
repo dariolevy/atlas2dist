@@ -4,52 +4,22 @@
 
     function uiService($http, $q) {
 
-        var getId = function (id) {
+        var getAll = function () {
             var defer = $q.defer();
 
-            $http.get('/api/ui?id=' + id)
-            .success(function (ui) {
-                defer.resolve(ui);
-            })
-            .error(function () {
-                defer.reject('server error')
-            });
-
-            return defer.promise;
-        };
-
-        var add = function (ui) {
-            var defer = $q.defer();
-
-            $http.post('/api/ui', ui)
-            .success(function (ui) {
-                defer.resolve(ui);
-            })
-            .error(function () {
-                defer.reject('server error')
-            });
-
-            return defer.promise;
-        };
-
-        var edit = function (ui) {
-            var defer = $q.defer();
-
-            $http.put('/api/ui?id=' + ui.id, ui)
-            .success(function (ui) {
-                defer.resolve(ui);
-            })
-            .error(function () {
-                defer.reject('server error')
-            });
+            //$http.get('/admin/api/mapa')
+            //.success(function (mapas) {
+            //    defer.resolve(mapas);
+            //})
+            //.error(function () {
+            //    defer.reject('server error')
+            //});
 
             return defer.promise;
         };
 
         return {
-            getId: getId,
-            add: add,
-            edit:edit
+            getAll: getAll,
         }
 
     }

@@ -1,5 +1,4 @@
-﻿@model SharedEntities.Entities.Ui
-@{
+﻿@{
     Layout = "";
 }
 
@@ -30,10 +29,6 @@
     <![endif]-->
 
     <title>Orgame</title>
-
-    <style type="text/css">
-       @Model.css
-    </style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini layout-boxed sidebar-collapse" ng-app="atlas2-juego">
@@ -118,13 +113,19 @@
 
         <!-- =============================================== -->
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper" ng-controller="appCtrl">
+        <div class="content-wrapper">
 
             <!-- Main content -->
             <section class="content">
                 <div class="row">
 
-                    <atlas2-recurso ng-repeat="recurso in recursos"></atlas2-recurso>
+                    <atlas2-recurso></atlas2-recurso>
+
+                    <atlas2-recurso></atlas2-recurso>
+
+                    <atlas2-recurso></atlas2-recurso>
+
+                    <atlas2-recurso></atlas2-recurso>
 
                 </div>
 
@@ -164,24 +165,19 @@
     <script src="~/SPA/front/app.js"></script>
 
     <!-- services -->
-    <script src="~/SPA/front/services/jugador-destacamento.js"></script> 
-    <script src="~/SPA/front/services/jugador-edificio.js"></script>
-    <script src="~/SPA/front/services/jugador-investigacion.js"></script>
-    <script src="~/SPA/front/services/jugador-mapa.js"></script>
-    <script src="~/SPA/front/services/jugador-recurso.js"></script>
-
+    <!-- <script src="app/services/home.js"></script> -->
     <!-- directives -->
     <script src="~/SPA/front/directives/recurso.js"></script>
     <script src="~/SPA/front/directives/unidad.js"></script>
     <script src="~/SPA/front/directives/unidad-construccion.js"></script>
 
     <!-- controllers -->
-    <script src="~/SPA/front/controllers/app.js"></script>
     <script src="~/SPA/front/controllers/home.js"></script>
     <script src="~/SPA/front/controllers/zona.js"></script>
     <script src="~/SPA/front/controllers/edificio.js"></script>
     <script src="~/SPA/front/controllers/destacamento.js"></script>
     <script src="~/SPA/front/controllers/investigacion.js"></script>
+
 </body>
 
 </html>

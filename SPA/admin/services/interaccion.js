@@ -7,7 +7,7 @@
         var getAll = function(){
             var defer = $q.defer();
 
-            $http.get('/api/interaccion')
+            $http.get('/admin/api/interaccion')
             .success(function (interacciones) {
                 defer.resolve(interacciones);
             })
@@ -21,7 +21,7 @@
         var add = function(interaccion){
             var defer = $q.defer();
 
-            $http.post('/api/interaccion', interaccion)
+            $http.post('/admin/api/interaccion', interaccion)
             .success(function (interaccion) {
                 defer.resolve(interaccion);
             })
@@ -35,7 +35,7 @@
         var edit = function(interaccion){
             var defer = $q.defer();
 
-            $http.put('/api/interaccion?id=' + interaccion.id, interaccion)
+            $http.put('/admin/api/interaccion?id=' + interaccion.id, interaccion)
             .success(function (interaccion) {
                 defer.resolve(interaccion);
             })
@@ -49,7 +49,7 @@
         var borrar = function(id){
             var defer = $q.defer();
 
-            $http.delete('/api/interaccion?id=' + id)
+            $http.delete('/admin/api/interaccion?id=' + id)
             .success(function (interaccion) {
                 defer.resolve(interaccion);
             })
@@ -63,7 +63,7 @@
         var getId = function(id){
             var defer = $q.defer();
 
-            $http.get('/api/interaccion?id='+id)
+            $http.get('/admin/api/interaccion?id='+id)
             .success(function (interaccion) {
                 defer.resolve(interaccion);
             })
