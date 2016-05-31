@@ -7,7 +7,7 @@
         var getByNuevos = function () {
             var defer = $q.defer();
 
-            //$http.get('/admin/api/mapa')
+            //$http.get('/api/mapa')
             //.success(function (mapas) {
             //    defer.resolve(mapas);
             //})
@@ -35,7 +35,7 @@
         var getBySesion = function () {
             var defer = $q.defer();
 
-            //$http.get('/admin/api/mapa')
+            //$http.get('/api/mapa')
             //.success(function (mapas) {
             //    defer.resolve(mapas);
             //})

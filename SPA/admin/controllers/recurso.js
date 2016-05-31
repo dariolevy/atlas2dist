@@ -26,7 +26,6 @@
 
             recursoService.add(recurso).then(
                 function (data) {
-                    $scope.recursos.push(data);
                     $scope.saving = false;
                 
                     mostrarNotificacion('success');

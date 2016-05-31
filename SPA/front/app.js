@@ -39,4 +39,40 @@
         });
     }
 
+    angular.module('atlas2-juego').factory('colonias', ['$rootScope', function ($rootScope) {
+        var mapas = null;
+        var mapa = null;
+
+        var get = function () {
+            return mapas
+        };
+
+        var set = function (m) {
+            mapas = m;
+
+            setCurrent(mapas['0']);
+
+            $rootScope.$broadcast('mapa:changed', mapas);
+        };
+
+        var getCurrent = function () {
+            return mapa
+        };
+
+        var setCurrent = function (m) {
+            mapa = m;
+
+            console.log(m);
+
+            $rootScope.$broadcast('mapa:current', mapa);
+        };
+
+        return {
+            get: get,
+            set: set,
+            getCurrent: getCurrent,
+            setCurrent: setCurrent
+        };
+    }]);
+
 })();
