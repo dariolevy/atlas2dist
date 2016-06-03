@@ -7,7 +7,7 @@
         var getAll = function () {
             var defer = $q.defer();
 
-            $http.get('/admin/api/edificio')
+            $http.get('/api/edificio')
             .success(function (edificios) {
                 defer.resolve(edificios);
             })
@@ -21,7 +21,7 @@
         var add = function (edificio) {
             var defer = $q.defer();
 
-            $http.post('/admin/api/edificio', edificio)
+            $http.post('/api/edificio', edificio)
             .success(function (edificio) {
                 defer.resolve(edificio);
             })
@@ -35,7 +35,7 @@
         var edit = function (edificio) {
             var defer = $q.defer();
 
-            $http.put('/admin/api/edificio?id=' + edificio.id, edificio)
+            $http.put('/api/edificio?id=' + edificio.id, edificio)
             .success(function (edificio) {
                 defer.resolve(edificio);
             })
@@ -49,7 +49,7 @@
         var borrar = function (id) {
             var defer = $q.defer();
 
-            $http.delete('/admin/api/edificio?id=' + id)
+            $http.delete('/api/edificio?id=' + id)
             .success(function (edificio) {
                 defer.resolve(edificio);
             })

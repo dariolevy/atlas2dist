@@ -6,9 +6,7 @@
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>
-        @ViewBag.Title
-    </h1>
+    <h1>@ViewBag.Title</h1>
 </section>
 
 <!-- Main content -->
@@ -43,24 +41,24 @@
                 </div>
             </div>
 
-                <div class="box-footer">
-                    @Html.ActionLink("Registrar nuevo usuario", "Register")
-                    <input type="submit" class="btn btn-info pull-right" value="Iniciar" />
-                </div>
-                @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
-        }
-        </div>
-
-        <div class="box box-primary">
-            <div class="box-body">
-                <section id="socialLoginForm">
-                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-                </section>
+            <div class="box-footer">
+                @Html.ActionLink("Registrar nuevo usuario", "Register")
+                <input type="submit" class="btn btn-info pull-right" value="Iniciar" />
             </div>
+            @* Enable this once you have account confirmation enabled for password reset functionality
+                <p>
+                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                </p>*@
+        }
+    </div>
+
+    <div class="box box-primary">
+        <div class="box-body">
+            <section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>
         </div>
+    </div>
 </section>
 
 @section Scripts {

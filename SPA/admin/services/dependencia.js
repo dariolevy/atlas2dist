@@ -7,7 +7,7 @@
         var getAll = function () {
             var defer = $q.defer();
 
-            $http.get('/admin/api/dependencia')
+            $http.get('/api/dependencia')
             .success(function (dependencias) {
                 defer.resolve(dependencias);
             })
@@ -24,7 +24,7 @@
             dependencia['hijoId'] = parseInt(dependencia['hijoId']);
             dependencia['padreId'] = parseInt(dependencia['padreId']);
 
-            $http.post('/admin/api/dependencia', dependencia)
+            $http.post('/api/dependencia', dependencia)
             .success(function (dependencia) {
                 defer.resolve(dependencia);
             })
@@ -44,7 +44,7 @@
             delete dependencia.hijo;
             delete dependencia.padre;
 
-            $http.put('/admin/api/dependencia?id=' + dependencia.id, dependencia)
+            $http.put('/api/dependencia?id=' + dependencia.id, dependencia)
             .success(function (dependencia) {
                 defer.resolve(dependencia);
             })
@@ -58,7 +58,7 @@
         var borrar = function (id) {
             var defer = $q.defer();
 
-            $http.delete('/admin/api/dependencia?id=' + id)
+            $http.delete('/api/dependencia?id=' + id)
             .success(function (dependencia) {
                 defer.resolve(dependencia);
             })
@@ -72,7 +72,7 @@
         var getId = function (id) {
             var defer = $q.defer();
 
-            $http.get('/admin/api/dependencia?id=' + id)
+            $http.get('/api/dependencia?id=' + id)
             .success(function (dependencia) {
                 defer.resolve(dependencia);
             })
