@@ -1,13 +1,9 @@
 (function () {
     'use strict';
-    angular.module('atlas2-juego').controller('edificioCtrl', ['$scope', 'jugadorEdificioService', edificioCtrl]);
+    angular.module('atlas2-juego').controller('edificioCtrl', ['$scope', edificioCtrl]);
 
-    function edificioCtrl($scope, jugadorEdificioService) {
-        $scope.edificios = null;
-
-        jugadorEdificioService.getAllEdificios().then(function (data) {
-            $scope.edificios = data;
-        });
+    function edificioCtrl($scope) {
+        
     }
 
 })();

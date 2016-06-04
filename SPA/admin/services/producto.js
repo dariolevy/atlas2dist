@@ -7,7 +7,7 @@
         var getAll = function(){
             var defer = $q.defer();
 
-            $http.get('/api/producto')
+            $http.get('/admin/api/producto')
             .success(function (productos) {
                 defer.resolve(productos);
             })
