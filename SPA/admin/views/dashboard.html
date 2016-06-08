@@ -22,7 +22,23 @@
 
         <div class="x_content">
             <div style="width: 100%;">
-                <div id="porNuevos" class="demo-placeholder" style="width: 100%; height:400px;"></div>
+                <div id="porNuevos" class="demo-placeholder" style="width: 100%; height:250px;"></div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <table class="table table-striped responsive-utilities jambo_table bulk_action">
+                        <thead>
+                            <tr class="headings">
+                                <th>Fecha</th>
+                                <th>Datos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="dataN in dataNuevoFilter">
+                                <td>{{dataN.month}}</td>
+                                <td>{{dataN.amount}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -44,7 +60,23 @@
 
         <div class="x_content">
             <div style="width: 100%;">
-                <div id="porSesion" class="demo-placeholder" style="width: 100%; height:400px;"></div>
+                <div id="porSesion" style="width: 100%; height:250px;"></div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <table class="table table-striped responsive-utilities jambo_table bulk_action">
+                        <thead>
+                            <tr class="headings">
+                                <th>Fecha</th>
+                                <th>Datos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="dataN in dataSesionFilter">
+                                <td>{{dataN.month}}</td>
+                                <td>{{dataN.amount}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

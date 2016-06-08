@@ -118,6 +118,44 @@
                 </div>
                 <div class="ln_solid"></div>
                 <div class="form-group">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <h3> Produce </h3>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 form-inline" style="margin-top:10px;" ng-if="recursosProduce.length > 0">
+                        <div class="form-group">
+                            <label>Recurso</label>
+                            <select class="form-control" ng-model="produce.recurso">
+                                <option ng-repeat="recurso in recursosProduce" value="{{recurso.id}}">{{recurso.nombre}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Valor</label>
+                            <input type="number" class="form-control" ng-model="produce.valor">
+                        </div>
+                        <div class="form-group">
+                            <label>Incremento de nivel</label>
+                            <input type="number" step="0,01" class="form-control" ng-model="produce.incrementoNivel">
+                        </div>
+                        <a class="btn btn-default" style="margin:0;" ng-click="addRelation('produce')"><i class="fa fa-plus"></i></a>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-xs-12 form-inline" ng-repeat="p in producen" style="margin-top:10px;">
+                        <div class="form-group">
+                            <label>Recurso</label>
+                            <input type="text" class="form-control" value="{{p.nombreRecurso}}" disabled="disabled">
+                        </div>
+                        <div class="form-group">
+                            <label>Valor</label>
+                            <input type="text" class="form-control" value="{{p.valor}}" disabled="disabled">
+                        </div>
+                        <div class="form-group">
+                            <label>Incremento de nivel</label>
+                            <input type="text" class="form-control" value="{{p.incrementoNivel}}" disabled="disabled">
+                        </div>
+                        <a class="btn btn-default" style="margin:0;" ng-click="removeRelation('produce', $index)"><i class="fa fa-remove"></i></a>
+                    </div>
+                </div>
+                <div class="ln_solid"></div><div class="form-group">
                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                         <a href="#/investigacion" class="btn btn-primary">Cancelar</a>
                         <button class="btn btn-success" ng-disabled="saving">Guardar</button>

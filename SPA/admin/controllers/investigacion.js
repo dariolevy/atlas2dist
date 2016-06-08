@@ -1,21 +1,25 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller('investigacionCtrl', ['$scope', '$routeParams', '$location', 'investigacionService', 'recursoService', 'costoService', 'capacidadService', investigacionCtrl]);
+    angular.module('atlas2').controller('investigacionCtrl', ['$scope', '$routeParams', '$location', 'investigacionService', 'recursoService', 'costoService',
+                                        'capacidadService', 'produceService', investigacionCtrl]);
 
-    function investigacionCtrl($scope, $routeParams, $location, investigacionService, recursoService, costoService, capacidadService) {
+    function investigacionCtrl($scope, $routeParams, $location, investigacionService, recursoService, costoService, capacidadService, produceService) {
         $scope.saving = false;
 
         $scope.costos = [];
         $scope.capacidades = [];
         $scope.investigaciones = [];
+        $scope.producen = [];
 
         $scope.recursos = null;
         $scope.recursosCosto = null;
         $scope.recursosCapacidad = null;
+        $scope.recursosProduce = null;
 
         $scope.costo = null;
         $scope.capacidad = null;
         $scope.invetigacion = null;
+        $scope.produce = null;
 
         var path = $location.path();
 
@@ -24,6 +28,7 @@
                 $scope.recursos = data;
                 $scope.recursosCosto = angular.copy($scope.recursos);
                 $scope.recursosCapacidad = angular.copy($scope.recursos);
+                $scope.recursosProduce = angular.copy($scope.recursos);
             });
 
             if (path.indexOf('edit') > -1 || path.indexOf('add') > -1) {
@@ -84,6 +89,22 @@
                             }
 
                             capacidadService.add(capacidadData);
+                        }
+                    }
+
+                    //Recorre lo que produce y los asigno al producto
+                    if ($scope.producen.length) {
+                        for (var i in $scope.producen) {
+                            var produce = $scope.producen[i];
+
+                            var produceData = {
+                                inc: produce.incrementoNivel,
+                                idProducto: investigacionData,
+                                rec: { id: parseInt(produce.recurso) },
+                                valor: produce.valor
+                            }
+
+                            produceService.add(capacidadData);
                         }
                     }
 
@@ -170,7 +191,12 @@
                 scopeData = $scope.recursosCapacidad;
                 items = $scope.capacidades;
                 item = this.capacidad;
-            } else {
+            } else if (type == 'produce') {
+                scopeData = $scope.recursosProduce;
+                items = $scope.producen;
+                item = this.produce;
+            }
+            else {
                 return console.error('No se encontro el tipo de relacion.');
             }
 
@@ -212,7 +238,12 @@
                 scopeData = $scope.recursosCapacidad;
                 items = $scope.capacidades;
                 item = $scope.capacidades[index];
-            } else {
+            } else if (type == 'produce') {
+                scopeData = $scope.recursosProduce;
+                items = $scope.producen;
+                item = $scope.producen[index];
+            }
+            else {
                 return console.error('No se encontro el tipo de relacion.');
             }
 

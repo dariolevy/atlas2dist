@@ -4,7 +4,9 @@
 
     function dashboardCtrl($scope, dashboardService) {
         var dataPorNuevo = [];
+        $scope.dataNuevoFilter = [];
         var dataPorSesion = [];
+        $scope.dataSesionFilter = [];
 
         var startDateNuevos = moment().subtract(29, 'days');
         var endDateNuevos = moment();
@@ -70,6 +72,8 @@
                 dataArray.push({ 'amount' : 0, 'month' : 'No data' });
             }
 
+            $scope.dataNuevoFilter = dataArray;
+
             return dataArray;
         };
 
@@ -104,6 +108,8 @@
             var data = dataByRangoNuevos();
 
             chartPorNuevos.setData(data);
+
+            $scope.$apply();
         }
 
         //Grafica para la Sesion de los usuarios
@@ -121,6 +127,8 @@
             if (dataArray.length == 0) {
                 dataArray.push({ 'amount': 0, 'month': 'No data' });
             }
+
+            $scope.dataSesionFilter = dataArray;
 
             return dataArray;
         };
@@ -156,6 +164,8 @@
             var data = dataByRangoSesion();
 
             chartPorSesion.setData(data);
+
+            $scope.$apply();
         }
     }
 
