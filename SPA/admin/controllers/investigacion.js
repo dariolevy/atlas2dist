@@ -1,8 +1,8 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller('investigacionCtrl', ['$scope', '$routeParams', '$location', 'investigacionService', 'recursoService', investigacionCtrl]);
+    angular.module('atlas2').controller('investigacionCtrl', ['$scope', '$routeParams', '$location', 'investigacionService', 'recursoService', 'costoService', 'capacidadService', investigacionCtrl]);
 
-    function investigacionCtrl($scope, $routeParams, $location, investigacionService, recursoService) {
+    function investigacionCtrl($scope, $routeParams, $location, investigacionService, recursoService, costoService, capacidadService) {
         $scope.saving = false;
 
         $scope.costos = [];
@@ -41,16 +41,51 @@
         }
 
         $scope.add = function () {
-            $scope.saving       = true;
-            var investigacion   = this.investigacion;
-            
-            investigacion['costos'] = $scope.costos;
-            investigacion['capacidad'] = $scope.capacidades;
+            $scope.saving = true;
+            var investigacion = this.investigacion;
+
+            if (!$scope.costos.length) {
+                $scope.saving = false;
+
+                mostrarNotificacion('error', 'Debe agregar al menos un costo.');
+                return;
+            }
 
             investigacionService.add(investigacion).then(
-                function (data) {
-                    $scope.investigaciones.push(data);
+                function (investigacionData) {
                     $scope.saving = false;
+
+                    //Recorre los costos y los asigno al producto
+                    if ($scope.costos.length) {
+                        for (var i in $scope.costos) {
+                            var costo = $scope.costos[i];
+
+                            var costoData = {
+                                inc: costo.incrementoNivel,
+                                idProducto: investigacionData,
+                                rec: { id: parseInt(costo.recurso) },
+                                valor: costo.valor
+                            }
+
+                            costoService.add(costoData);
+                        }
+                    }
+
+                    //Recorre lascapacidades y los asigno al producto
+                    if ($scope.capacidades.length) {
+                        for (var i in $scope.capacidades) {
+                            var capacidad = $scope.capacidades[i];
+
+                            var capacidadData = {
+                                inc: capacidad.incrementoNivel,
+                                idProducto: investigacionData,
+                                rec: { id: parseInt(capacidad.recurso) },
+                                valor: capacidad.valor
+                            }
+
+                            capacidadService.add(capacidadData);
+                        }
+                    }
 
                     mostrarNotificacion('success');
                     window.history.back();
@@ -101,16 +136,15 @@
             }
         }
 
-        var mostrarNotificacion = function (tipo) {
+        var mostrarNotificacion = function (tipo, text) {
             var title = '';
-            var text = '';
 
             if (tipo == 'success') {
                 var title = 'Exito!';
-                var text = 'Acción realizada con exito.';
+                var text = text || 'Acción realizada con exito.';
             } else if (tipo == 'error') {
                 var title = 'Oh No!';
-                var text = 'Ha ocurrido un error.';
+                var text = text || 'Ha ocurrido un error.';
             }
 
             new PNotify({

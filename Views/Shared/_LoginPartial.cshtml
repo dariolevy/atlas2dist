@@ -6,7 +6,7 @@
         @Html.AntiForgeryToken()
         <ul class="nav navbar-nav navbar-right" style="margin-right:15px;">
             <li class="dropdown user user-menu">
-                <a href="#/" class="dropdown-toggle" data-toggle="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown">
                     <span class="hidden-xs">@User.Identity.GetUserName()</span>
                 </a>
                 <ul class="dropdown-menu">
@@ -34,6 +34,6 @@ else
 {
     <ul class="nav navbar-nav navbar-right">
         <li class="active">@Html.ActionLink("Iniciar Sesion", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-        <li>@Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Registrarse", "RegisterJugador", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
     </ul>
 }

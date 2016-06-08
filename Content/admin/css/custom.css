@@ -2699,7 +2699,7 @@ a.btn-success, a.btn-primary, a.btn-warning, a.btn-danger {
 }
 .daterangepicker .calendar {
   display: none;
-  max-width: 270px;
+  max-width: 300px;
 }
 .daterangepicker.show-calendar .calendar {
   display: block;

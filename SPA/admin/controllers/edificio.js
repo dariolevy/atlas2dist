@@ -1,8 +1,8 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller('edificioCtrl', ['$scope', '$routeParams', '$location','edificioService', 'recursoService', edificioCtrl]);
+    angular.module('atlas2').controller('edificioCtrl', ['$scope', '$routeParams', '$location', 'edificioService', 'recursoService', 'costoService', 'capacidadService', edificioCtrl]);
 
-    function edificioCtrl($scope, $routeParams, $location, edificioService, recursoService) {
+    function edificioCtrl($scope, $routeParams, $location, edificioService, recursoService, costoService, capacidadService) {
         $scope.saving = false;
 
         $scope.costos = [];
@@ -41,16 +41,51 @@
         }
 
         $scope.add = function () {
-            $scope.saving   = true;
-            var edificio    = this.edificio;
+            $scope.saving = true;
+            var edificio = this.edificio;
 
-            edificio['costo'] = $scope.costos;
-            edificio['capacidad'] = $scope.capacidades;
+            if (!$scope.costos.length) {
+                $scope.saving = false;
+
+                mostrarNotificacion('error', 'Debe agregar al menos un costo.');
+                return;
+            }
 
             edificioService.add(edificio).then(
-                function (data) {
-                    $scope.edificios.push(data);
+                function (edificioData) {
                     $scope.saving = false;
+
+                    //Recorre los costos y los asigno al producto
+                    if ($scope.costos.length) {
+                        for (var i in $scope.costos) {
+                            var costo = $scope.costos[i];
+
+                            var costoData = {
+                                inc: costo.incrementoNivel,
+                                idProducto: edificioData,
+                                rec: { id: parseInt(costo.recurso) },
+                                valor : costo.valor
+                            }
+
+                            costoService.add(costoData);
+                        }
+                    }
+
+                    //Recorre lascapacidades y los asigno al producto
+                    if ($scope.capacidades.length) {
+                        for (var i in $scope.capacidades) {
+                            var capacidad = $scope.capacidades[i];
+
+                            var capacidadData = {
+                                inc: capacidad.incrementoNivel,
+                                idProducto: edificioData,
+                                rec: { id: parseInt(capacidad.recurso) },
+                                valor: capacidad.valor
+                            }
+
+                            capacidadService.add(capacidadData);
+                        }
+                    }
 
                     mostrarNotificacion('success');
                     window.history.back();
@@ -101,16 +136,15 @@
             }
         }
 
-        var mostrarNotificacion = function (tipo) {
+        var mostrarNotificacion = function (tipo, text) {
             var title = '';
-            var text = '';
 
             if (tipo == 'success') {
                 var title = 'Exito!';
-                var text = 'Acción realizada con exito.';
+                var text = text || 'Acción realizada con exito.';
             } else if (tipo == 'error') {
                 var title = 'Oh No!';
-                var text = 'Ha ocurrido un error.';
+                var text = text || 'Ha ocurrido un error.';
             }
 
             new PNotify({
