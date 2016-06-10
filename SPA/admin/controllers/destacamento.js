@@ -95,7 +95,7 @@
                     //Recorre los productos y los asigno al producto
                     if ($scope.producen.length) {
                         for (var i in $scope.producen) {
-                            var costo = $scope.producen[i];
+                            var produce = $scope.producen[i];
 
                             var produceData = {
                                 inc: produce.incrementoNivel,

@@ -9,8 +9,8 @@
                   <div class="col-md-3" ng-repeat="mapa in mapas">
                       <div class="form-group">
                           <label>{{mapa.nombre}}</label>
-                          <select class="form-control" ng-model="filtro" ng-change="recargarZona(mapa.nivel)">
-                              <option ng-repeat="cant in mapa.zonas" ng-selected="cant == mapa.selected" value="{{cant}}">{{cant}} {{mapa.selected}}</option>
+                          <select class="form-control filtros" data-nivel="{{mapa.nivel}}">
+                              <option ng-repeat="cant in mapa.zonas" ng-selected="cant == filtros[mapa.nivel]">{{cant}}</option>
                           </select>
                       </div>
                   </div>

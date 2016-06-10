@@ -4,10 +4,9 @@
 
     function zonaCtrl($scope, jugadorMapaService, coloniaFactory) {
         $scope.iteraccion = null;
-        $scope.mapas = null;
-        $scope.zona = null;
-        $scope.zonaRows = null;
-        var filtros = [];
+        $scope.mapas = [];
+        $scope.zonaRows = [];
+        $scope.filtros = [];
 
         var currentMapa = coloniaFactory.getCurrent();
         var zona = null;
@@ -30,7 +29,8 @@
                     }
 
                     mapa['zonas'] = cant;
-                    mapa['selected'] = rowSelected;
+
+                    $scope.filtros[mapa.nivel] = rowSelected;
                 }
 
                 cargarZonasRow(coord);
@@ -44,8 +44,6 @@
             var cantidad = zona.cantidad;
             var nivel = zona.nivel;
 
-            console.log(coordenada)
-
             jugadorMapaService.getByCoordenadas(coordenada).then(function (colonias) {
                 var coloniaArray = [];
                 for (var c in colonias) {
@@ -53,8 +51,9 @@
                     coloniaArray[colonia['nivel' + nivel]] = colonia;
                 }
 
+                var coord = '/' + coordenada.join('/') + '/';
                 for (var z = 1; z <= cantidad; z++) {
-                    var current = currentMapa['nivel' + nivel];
+                    var current = (currentMapa['nivel' + nivel] && coord == currentMapa.coord) ? currentMapa['nivel' + nivel] : null;
 
                     var jugador = {};
                     if (coloniaArray[z]) {
@@ -89,23 +88,32 @@
             initialize();
         }
 
-        $scope.recargarZona = function (nivel) {
-            filtros[nivel] = this.filtro;
-
-            console.log(filtros);
-        };
-
         $scope.mostrarIteraccion = function(){
             $('#modal-iteraccion').modal('show');
             console.log('show');
         }
 
         $scope.guardarIteraccion = function () {
-            console.log(this.iteraccion);
-
             $('#modal-iteraccion').modal('hide');
         }
 
+        $(document).on('change', '.filtros', function () {
+            var valor = $(this).val();
+            var nivel = $(this).data('nivel');
+
+            $scope.filtros[nivel] = parseInt(valor);
+
+            var coord = [];
+            for (var f in $scope.filtros) {
+                var filtro = $scope.filtros[f];
+
+                coord.push(filtro);
+            }
+
+            cargarZonasRow(coord);
+
+            $scope.$apply();
+        });
     }
 
 })();
