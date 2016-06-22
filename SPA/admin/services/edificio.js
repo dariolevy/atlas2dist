@@ -63,7 +63,7 @@
         var getId = function (id) {
             var defer = $q.defer();
 
-            $http.get('/admin/api/edificio?id=' + id)
+            $http.get('/api/edificio?id=' + id)
             .success(function (edificio) {
                 defer.resolve(edificio);
             })

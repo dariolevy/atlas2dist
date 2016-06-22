@@ -11,12 +11,19 @@
 
         var initialize = function () {
             jugadorInvestigacionService.getInvestigacionByColonia(currentMapa.id).then(function (jugadorInvestigacion) {
+                var today = moment();
                 var investigacionArray = [];
                 for (var r in jugadorInvestigacion) {
                     var rel = jugadorInvestigacion[r];
 
                     rel.investigacion['nivel'] = rel.nivel;
                     rel.investigacion['relId'] = rel.id;
+
+                    if (today.isBefore(moment(rel.finalizaConstruccion), 'second')) {
+                        rel.investigacion['enConstruccion'] = true;
+                    } else {
+                        rel.investigacion['enConstruccion'] = false;
+                    }
 
                     investigacionArray.push(rel.investigacion);
                 }
@@ -42,13 +49,12 @@
                 jugadorInvestigacionService.subirNivel(investigacion.relId).then(
                     function (data) {
                         $scope.showLoading = null;
-                        investigacion.nivel++;
+                        investigacion.enConstruccion = true;
                     }, function () {
                         $scope.showLoading = null;
                     }
                 );
-            }, 3000);
-
+            }, 2000);
         }
 
         $scope.bajarNivel = function (investigacion) {
@@ -63,7 +69,7 @@
                         $scope.showLoading = null;
                     }
                 );
-            }, 3000);
+            }, 2000);
         }
 
         $scope.mostrarInfo = function (investigacion) {
@@ -73,7 +79,7 @@
 
         $('#modal-info-investigacion').on('hidden.bs.modal', function (e) {
             $scope.investigacion = null;
-        })
+        });
     }
 
 })();

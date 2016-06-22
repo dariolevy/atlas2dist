@@ -11,12 +11,20 @@
         
         var initialize = function () {
             jugadorEdificioService.getEdificioByColonia(currentMapa.id).then(function (jugadorEdificio) {
+                var today = moment();
+
                 var edificioArray = [];
                 for (var r in jugadorEdificio) {
                     var rel = jugadorEdificio[r];
 
                     rel.edificio['nivel'] = rel.nivelE;
-                    rel.edificio['relId']= rel.id;
+                    rel.edificio['relId'] = rel.id;
+
+                    if (today.isBefore(moment(rel.finalizaConstruccion), 'second')) {
+                        rel.edificio['enConstruccion'] = true;
+                    } else {
+                        rel.edificio['enConstruccion'] = false;
+                    }
 
                     edificioArray.push(rel.edificio);
                 }
@@ -42,13 +50,12 @@
                 jugadorEdificioService.subirNivel(edificio.relId).then(
                     function (data) {
                         $scope.showLoading = null;
-                        edificio.nivel++;
+                        edificio.enConstruccion = true;
                     }, function () {
                         $scope.showLoading = null;
                     }
                 );
-            }, 3000);
-            
+            }, 2000);
         }
 
         $scope.bajarNivel = function (edificio) {
@@ -63,7 +70,7 @@
                         $scope.showLoading = null;
                     }
                 );
-            }, 3000);
+            }, 2000);
         }
 
         $scope.mostrarInfo = function (edificio) {
@@ -73,7 +80,7 @@
 
         $('#modal-info-edificio').on('hidden.bs.modal', function (e) {
             $scope.edificio = null;
-        })
+        });
     }
 
 })();

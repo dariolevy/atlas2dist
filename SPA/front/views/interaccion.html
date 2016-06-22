@@ -1,0 +1,49 @@
+<div class="box box-primary">
+  <div class="box-header">
+    <h1 class="page-header">Interacciones</h1>
+  </div>
+    <div class="box-body">
+        <div class="table-responsive mailbox-messages">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Interaccion</th>
+                        <th>Fecha</th>
+                        <th>Jugador</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="interaccion in interacciones">
+                        <td>{{interaccion.intName}}</td>
+                        <td>{{interaccion.Fecha | date:"dd/MM/yyyy hh:mm"}}</td>
+                        <td>{{interaccion.receiverId}}</td>
+                        <td>
+                            <button type="button" class="btn btn-default btn-sm" ng-click="detalle(interaccion)"><i class="fa fa-search"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- /.table -->
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-primary fade" id="modal-info-interaccion">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Proximamente</h4>
+            </div>
+            <div class="modal-body">
+                Proximamente se implementaran estas opciones...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

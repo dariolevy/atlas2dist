@@ -3,7 +3,6 @@
     angular.module('atlas2-juego').controller('zonaCtrl', ['$scope', 'jugadorMapaService', 'coloniaFactory', zonaCtrl]);
 
     function zonaCtrl($scope, jugadorMapaService, coloniaFactory) {
-        $scope.iteraccion = null;
         $scope.mapas = [];
         $scope.zonaRows = [];
         $scope.filtros = [];
@@ -53,11 +52,13 @@
 
                 var coord = '/' + coordenada.join('/') + '/';
                 for (var z = 1; z <= cantidad; z++) {
-                    var current = (currentMapa['nivel' + nivel] && coord == currentMapa.coord) ? currentMapa['nivel' + nivel] : null;
+                    var current = (currentMapa.coord == '/' || (currentMapa['nivel' + nivel] && coord == currentMapa.coord)) ? currentMapa['nivel' + nivel] : null;
 
-                    var jugador = {};
+                    var jugador = null;
+                    var coloniaId = null;
                     if (coloniaArray[z]) {
                         jugador = coloniaArray[z].jugador;
+                        coloniaId = coloniaArray[z].id;
                     }
 
                     var classRow = '';
@@ -67,6 +68,7 @@
 
                     zonaRows.push({
                         id: z,
+                        coloniaId : coloniaId,
                         classRow: classRow,
                         nombre: zona.nombre + ' ' + z,
                         jugador: jugador,
@@ -86,15 +88,6 @@
 
         if (currentMapa) {
             initialize();
-        }
-
-        $scope.mostrarIteraccion = function(){
-            $('#modal-iteraccion').modal('show');
-            console.log('show');
-        }
-
-        $scope.guardarIteraccion = function () {
-            $('#modal-iteraccion').modal('hide');
         }
 
         $(document).on('change', '.filtros', function () {

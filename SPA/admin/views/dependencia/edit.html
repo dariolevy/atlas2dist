@@ -21,7 +21,7 @@
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <select class="form-control" id="padre" ng-model="dependencia.padreId" required="required">
-                            <option ng-repeat="producto1 in productos" value="{{producto1.id}}" ng-selected="dependencia.padreId == producto1.id">{{producto1.nombre}}</option>
+                            <option ng-repeat="producto1 in productos" value="{{producto1.id}}" ng-selected="producto1.id == dependencia.padreId">{{producto1.nombre}}</option>
                         </select>
                         <ul class="parsley-errors-list" id="parsley-id-padre"></ul>
                     </div>
@@ -32,7 +32,7 @@
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <select class="form-control" id="hijo" ng-model="dependencia.hijoId" required">
-                            <option ng-repeat="producto2 in productos" value="{{producto2.id}}" ng-selected="dependencia.hijoId == producto2.id">{{producto2.nombre}}</option>
+                            <option ng-repeat="producto2 in productos" value="{{producto2.id}}" ng-selected="producto2.id == dependencia.hijoId">{{producto2.nombre}}</option>
                         </select>
                         <ul class="parsley-errors-list" id="parsley-id-hijo"></ul>
                     </div>
@@ -42,7 +42,7 @@
                         Nivel <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="number" id="nivel" class="form-control col-md-7 col-xs-12" ng-model="dependencia.nivel" required="required" value="{{dependencia.nivel}}">
+                        <input type="number" id="nivel" class="form-control col-md-7 col-xs-12" ng-model="dependencia.nivel" required="required" value="{{dependecia.nivel}}">
                         <ul class="parsley-errors-list" id="parsley-id-nivel"></ul>
                     </div>
                 </div>

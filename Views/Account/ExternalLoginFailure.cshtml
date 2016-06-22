@@ -1,8 +1,18 @@
-﻿@{
-    ViewBag.Title = "Login Failure";
+﻿@model GameBuildPortal.Models.LayoutViewModel
+@{
+    ViewBag.Title = "Fallo login";
 }
 
-<hgroup>
-    <h2>@ViewBag.Title.</h2>
-    <h3 class="text-danger">Unsuccessful login with service.</h3>
-</hgroup>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>@ViewBag.Title</h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="box box-primary">
+        <div class="box-body">
+            <h3 class="text-danger">No se pudo inisiar sesion con el servicio.</h3>
+        </div>
+    </div>
+</section>

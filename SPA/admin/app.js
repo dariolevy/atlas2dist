@@ -10,9 +10,9 @@
         $routeProvider.when("/", {
             templateUrl : "/SPA/admin/views/dashboard.html",
 		    controller  : 'dashboardCtrl'
-        }).when("/ui", {
-            templateUrl: "/SPA/admin/views/ui.html",
-            controller: 'uiCtrl'
+        }).when("/configuracion", {
+            templateUrl: "/SPA/admin/views/configuracion.html",
+            controller: 'confCtrl'
         }).otherwise({
             redirectTo 	: '/'
         });

@@ -4,7 +4,15 @@
 		  <div class="box-body box-profile">
 		    <h3 class="profile-username text-center">Edificios</h3>
 
-		    <atlas2-unidad-construccion></atlas2-unidad-construccion>
+		    <atlas2-unidad-construccion ng-repeat="unidad in construyendoEdificio"></atlas2-unidad-construccion>
+
+            <ul class="products-list product-list-in-box" ng-if="!construyendoEdificio.length">
+                <li class="item">
+                    <p class="product-description text-center">
+                        No hay nada en construcci&oacute;n
+                    </p>
+                </li>
+            </ul>
 		    
 		  </div>
 		  <!-- /.box-body -->
@@ -15,7 +23,15 @@
 		  <div class="box-body box-profile">
 		    <h3 class="profile-username text-center">Investigaciones</h3>
 
-		    <atlas2-unidad-construccion></atlas2-unidad-construccion>
+		    <atlas2-unidad-construccion ng-repeat="unidad in construyendoInvestigacion"></atlas2-unidad-construccion>
+
+            <ul class="products-list product-list-in-box" ng-if="!construyendoInvestigacion.length">
+                <li class="item">
+                    <p class="product-description text-center">
+                        No hay nada en construcci&oacute;n
+                    </p>
+                </li>
+            </ul>
 
 		  </div>
 		  <!-- /.box-body -->
@@ -26,7 +42,15 @@
 		  <div class="box-body box-profile">
 		    <h3 class="profile-username text-center">Destacamentos</h3>
 
-		    <atlas2-unidad-construccion></atlas2-unidad-construccion>
+                <atlas2-unidad-construccion ng-repeat="unidad in construyendoDestacamento"></atlas2-unidad-construccion>
+
+                <ul class="products-list product-list-in-box" ng-if="!construyendoDestacamento.length">
+                    <li class="item">
+                        <p class="product-description text-center">
+                            No hay nada en construcci&oacute;n
+                        </p>
+                    </li>
+                </ul>
 
 		  </div>
 		  <!-- /.box-body -->

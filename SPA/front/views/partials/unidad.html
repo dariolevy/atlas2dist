@@ -3,14 +3,16 @@
         <img class="img-responsive" src="http://lorempixel.com/300/150/abstract" width="300" height="150">
         <h3 class="profile-username text-center">{{unidad.nombre}}</h3>
         <p class="text-muted text-center">Nivel: {{unidad.nivel}}</p>
+        <p class="text-blue text-center" ng-if="unidad.enConstruccion">En construcci&oacute;n...</p>
+        <p class="text-muted text-center" ng-if="!unidad.enConstruccion">Tiempo de construcci&oacute;n: {{unidad.tiempoInicial}}</p>
     </div>
     <div class="box-footer">
         <div class="input-group pull-left">
             <button class="btn btn-info btn-flat" ng-click="mostrarInfo(unidad)"><i class="glyphicon glyphicon-search"></i></button>
         </div>
         <div class="input-group pull-right">
-            <button class="btn btn-danger btn-flat" ng-disabled="showLoading" ng-click="bajarNivel(unidad)" ng-if="unidad.nivel > 0"><i class="glyphicon glyphicon-chevron-down"></i></button>
-            <button class="btn btn-success btn-flat" ng-disabled="showLoading" ng-click="subirNivel(unidad)"><i class="glyphicon glyphicon-chevron-up"></i></button>
+            <button class="btn btn-danger btn-flat" ng-disabled="showLoading || unidad.enConstruccion" ng-click="bajarNivel(unidad)" ng-if="unidad.nivel > 0"><i class="glyphicon glyphicon-chevron-down"></i></button>
+            <button class="btn btn-success btn-flat" ng-disabled="showLoading || unidad.enConstruccion" ng-click="subirNivel(unidad)"><i class="glyphicon glyphicon-chevron-up"></i></button>
         </div>
     </div>
     <div class="overlay" ng-if="showLoading == unidad.id">

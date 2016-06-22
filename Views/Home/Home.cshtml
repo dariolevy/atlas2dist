@@ -1,11 +1,12 @@
-﻿@{
-    ViewBag.Title = "Inicio";
+﻿@model GameBuildPortal.Models.LayoutViewModel
+@{
+    ViewBag.Title = @Model.Configuracion.nombre;
 }
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Bienvenido a Orgame
+        Bienvenido a @Model.Configuracion.nombre
     </h1>
 </section>
 

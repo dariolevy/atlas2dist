@@ -32,6 +32,20 @@
             return defer.promise;
         };
 
+        var getColoniaById = function (id) {
+            var defer = $q.defer();
+
+            $http.get('/api/jugadorMapa/' + id)
+            .success(function (jugadorMapas) {
+                defer.resolve(jugadorMapas);
+            })
+            .error(function () {
+                defer.reject('server error')
+            });
+
+            return defer.promise;
+        };
+
         var getByCoordenadas = function (coordenadas) {
             var defer = $q.defer();
 
@@ -49,7 +63,8 @@
         return {
             getAllMapas: getAllMapas,
             getColonias: getColonias,
-            getByCoordenadas : getByCoordenadas
+            getByCoordenadas: getByCoordenadas,
+            getColoniaById: getColoniaById
         }
 
     }

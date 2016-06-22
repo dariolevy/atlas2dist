@@ -1,4 +1,4 @@
-<div class="box">
+<div class="box box-primary">
     <div class="box-header with-border">
         <h3 class="box-title">Destacamentos</h3>
     </div>
@@ -6,52 +6,23 @@
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="unidad in destacamentos">
                 <div class="box box-primary">
-                    <div class="box-body box-profile" style="height:230px;">
+                    <div class="box-body box-profile">
                         <img class="img-responsive" src="http://lorempixel.com/300/150/abstract" width="300" height="150">
                         <h3 class="profile-username text-center">{{unidad.nombre}}</h3>
-                        <p class="text-muted text-center">{{unidad.descripcion}}</p>
                         <p><div class="bg-aqua disabled color-palette text-center">Cantidad: {{unidad.cantidad}}</div></p>
-                        
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="description-block">
-                                    <span class="description-text"><i class="glyphicon glyphicon-fire"></i></span>
-                                    <h5 class="description-header">{{unidad.ataque}}</h5>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="description-block">
-                                    <span class="description-text"><i class="glyphicon glyphicon-heart"></i></span>
-                                    <h5 class="description-header">{{unidad.vida}}</h5>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="description-block">
-                                    <span class="description-text"><i class="glyphicon glyphicon-tower"></i></span>
-                                    <h5 class="description-header">{{unidad.escudo}}</h5>
-                                </div>
-                            </div>
-                        </div>
-                       
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h5 class="text-center">Costos por unidad</h5>
-                            </div>
-                            <div ng-repeat="costo in unidad.costos" class="col-sm-{{12 / unidad.costos.length | number}}">
-                                <div class="description-block">
-                                    <h5 class="description-header">{{costo.valor}}</h5>
-                                    <span class="description-text">{{costo.recurso.nombre}}</span>
-                                </div>
-                            </div>
-                        </div>
+                        <p class="text-blue text-center" ng-if="unidad.enConstruccion">En construcci&oacute;n...</p>
+                        <p class="text-muted text-center" ng-if="!unidad.enConstruccion">Tiempo de construcci&oacute;n: {{unidad.tiempoInicial}}</p>
                     </div>
                     <div class="box-footer">
+                        <div class="input-group pull-left">
+                            <button class="btn btn-info btn-flat" ng-click="mostrarInfo(unidad)"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
                         <div class="input-group pull-right input-group-sm">
                             <div class="input-group">
-                                <input type="number" min="1" ng-model="cantidad" class="form-control" style="width : 60px" />
+                                <input type="number" min="1" ng-disabled="showLoading || unidad.enConstruccion" ng-model="cantidad" class="form-control" style="width : 60px" />
                                 <span class="input-group-btn">
-                                    <button class="btn btn-danger" ng-disabled="showLoading" ng-click="bajarCantidad(unidad, cantidad)"><i class="glyphicon glyphicon-chevron-down"></i></button>
-                                    <button class="btn btn-success" ng-disabled="showLoading" ng-click="subirCantidad(unidad, cantidad)"><i class="glyphicon glyphicon-chevron-up"></i></button>
+                                    <button class="btn btn-danger" ng-disabled="showLoading || unidad.enConstruccion" ng-click="bajarCantidad(unidad, cantidad)"><i class="glyphicon glyphicon-chevron-down"></i></button>
+                                    <button class="btn btn-success" ng-disabled="showLoading || unidad.enConstruccion" ng-click="subirCantidad(unidad, cantidad)"><i class="glyphicon glyphicon-chevron-up"></i></button>
                                 </span>
                             </div>
                         </div>
@@ -64,3 +35,76 @@
         </div>
     </div>
 </div>
+
+<div class="modal modal-info fade" id="modal-info-destacamento">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4>{{destacamento.nombre}}</h4>
+                <h5>{{destacamento.descripcion}}</h5>
+                <h5><span class="label label-success">Cantidad {{destacamento.cantidad}}</span></h5>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="description-block">
+                            <span class="description-text"><i class="glyphicon glyphicon-fire"></i></span>
+                            <h5 class="description-header">{{destacamento.ataque}}</h5>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="description-block">
+                            <span class="description-text"><i class="glyphicon glyphicon-heart"></i></span>
+                            <h5 class="description-header">{{destacamento.vida}}</h5>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="description-block">
+                            <span class="description-text"><i class="glyphicon glyphicon-tower"></i></span>
+                            <h5 class="description-header">{{destacamento.escudo}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row" ng-if="destacamento.produce.length">
+                    <div class="col-sm-12">
+                        <h5 class="text-center">Producci&oacute;n unitaria por hora</h5>
+                    </div>
+                    <div ng-repeat="produce in destacamento.produce" class="col-sm-{{12 / destacamento.produce.length | number}}">
+                        <div class="description-block">
+                            <h5 class="description-header">{{produce.valor}}</h5>
+                            <span class="description-text">{{produce.recurso.nombre}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-if="destacamento.capacidad.length">
+                    <div class="col-sm-12">
+                        <h5 class="text-center">Capacidad de carga por unidad</h5>
+                    </div>
+                    <div ng-repeat="capacidad in destacamento.capacidad" class="col-sm-{{12 / destacamento.capacidad.length | number}}">
+                        <div class="description-block">
+                            <h5 class="description-header">{{capacidad.valor}}</h5>
+                            <span class="description-text">{{capacidad.recurso.nombre}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-if="destacamento.costos.length">
+                    <div class="col-sm-12">
+                        <h5 class="text-center">Costo por unidad</h5>
+                    </div>
+                    <div ng-repeat="costo in destacamento.costos" class="col-sm-{{12 / destacamento.costos.length | number}}">
+                        <div class="description-block">
+                            <h5 class="description-header">{{costo.valor}}</h5>
+                            <span class="description-text">{{costo.recurso.nombre}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

@@ -1,4 +1,4 @@
-﻿@model SharedEntities.Entities.Ui
+﻿@model GameBuildPortal.Models.LayoutViewModel
 @{
     Layout = "";
 }
@@ -8,7 +8,6 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Orgame</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -29,14 +28,18 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <title>Orgame</title>
+    <title>@Model.Configuracion.titulo</title>
 
     <style type="text/css">
-       @Model.css
+        .direct-chat-messages{
+            height : 500px;
+        }
+
+       @Model.Configuracion.css
     </style>
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini layout-boxed sidebar-collapse" ng-app="atlas2-juego">
+<body class="hold-transition skin sidebar-mini layout-boxed sidebar-collapse" ng-app="atlas2-juego">
     <!-- Site wrapper -->
     <div class="wrapper">
 
@@ -44,9 +47,9 @@
             <!-- Logo -->
             <a href="#/" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>O</b></span>
+                <span class="logo-mini"><b>@Model.Configuracion.nombre.Substring(0, 1)</b></span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>O</b>rgame</span>
+                <span class="logo-lg">@Model.Configuracion.nombre</span>
             </a>
 
             <!-- Header Navbar: style can be found in header.less -->
@@ -61,38 +64,6 @@
                 </a>
 
                 <div class="navbar-custom-menu">
-                    <ul class="nav navbar-nav">
-
-                        <!-- Messages: style can be found in dropdown.less-->
-                        <li class="dropdown messages-menu">
-                            <a class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-envelope-o"></i>
-                                <span class="label label-success">4</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="header">You have 1 messages</li>
-                                <li>
-                                    <!-- inner menu: contains the actual data -->
-                                    <ul class="menu">
-                                        <!-- start message -->
-                                        <li>
-                                            <a>
-                                                <div class="pull-left">
-                                                    <img src="~/Content/front/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                                                </div>
-                                                <h4>
-                                                    Support Team
-                                                    <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                                </h4>
-                                                <p>Why not buy a new awesome theme?</p>
-                                            </a>
-                                        </li>
-                                        <!-- end message -->
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
                     @Html.Partial("_LoginPartial")
                 </div>
 
@@ -111,6 +82,9 @@
                     <li><a href="#/destacamento"><i class="fa fa-paper-plane"></i> <span>Destacamento</span></a></li>
                     <li><a href="#/investigacion"><i class="fa fa-flask"></i> <span>Investigaciones</span></a></li>
                     <li><a href="#/zona"><i class="fa fa-map"></i> <span>Zona</span></a></li>
+                    <li><a href="#/interaccion"><i class="glyphicon glyphicon-transfer"></i> <span>Interacciones</span></a></li>
+                    <li><a href="#/alianza"><i class="fa fa-university"></i> <span>Alianzas</span></a></li>
+                    <li><a href="#/chat"><i class="fa fa-comment"></i> <span>Chat</span></a></li>
                 </ul>
             </section>
             <!-- /.sidebar -->
@@ -123,9 +97,9 @@
             <!-- Main content -->
             <section class="content">
                 <div class="row">
-
-                    <atlas2-recurso ng-repeat="recurso in recursos"></atlas2-recurso>
-
+                    <div ng-repeat="recurso in recursos" class="col-md-{{12 / recursos.length | number}} col-xs-12">
+                        <atlas2-recurso ></atlas2-recurso>
+                    </div>
                 </div>
 
                 <div class="row">
@@ -147,6 +121,9 @@
 
     <script src="~/Scripts/front/js/angular.min.js"></script>
     <script src="~/Scripts/front/js/angular-route.min.js"></script>
+    <script src="~/Scripts/front/js/firebase.js"></script>
+    <script src="~/Scripts/front/js/angularfire.min.js"></script>
+    <script src="~/Scripts/front/js/moment.js"></script>
 
     <!-- jQuery 2.2.0 -->
     <script src="~/Scripts/front/plugins/jQuery/jQuery-2.2.0.min.js"></script>
@@ -169,6 +146,10 @@
     <script src="~/SPA/front/services/jugador-investigacion.js"></script>
     <script src="~/SPA/front/services/jugador-mapa.js"></script>
     <script src="~/SPA/front/services/jugador-recurso.js"></script>
+    <script src="~/SPA/front/services/interaccion.js"></script>
+    <script src="~/SPA/front/services/alianza.js"></script>
+    <script src="~/SPA/front/services/chat.js"></script>
+    <script src="~/SPA/front/services/me.js"></script>
 
     <!-- directives -->
     <script src="~/SPA/front/directives/recurso.js"></script>
@@ -182,6 +163,10 @@
     <script src="~/SPA/front/controllers/edificio.js"></script>
     <script src="~/SPA/front/controllers/destacamento.js"></script>
     <script src="~/SPA/front/controllers/investigacion.js"></script>
+    <script src="~/SPA/front/controllers/interaccion.js"></script>
+    <script src="~/SPA/front/controllers/alianza.js"></script>
+    <script src="~/SPA/front/controllers/chat.js"></script>
+    <script src="~/SPA/front/controllers/interaccion-historial.js"></script>
 </body>
 
 </html>

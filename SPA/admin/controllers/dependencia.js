@@ -5,7 +5,7 @@
     function dependenciaCtrl($scope, $routeParams, $location, dependenciaService, productoService) {
         $scope.dependencias = [];
         $scope.dependencia = null;
-        $scope.productos = null;
+        $scope.productos = [];
         $scope.saving   = false;
 
         var path = $location.path();
@@ -14,13 +14,15 @@
             if (path.indexOf('edit') > -1 || path.indexOf('add') > -1) {
                 productoService.getAll().then(function (data) {
                     $scope.productos = data;
+
+                    var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
+                    if (id) {
+                        dependenciaService.getId(id).then(function (data) {
+                            console.log(data)
+                            $scope.dependencia = data;
+                        });
+                    }
                 });
-                var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
-                if (id) {
-                    dependenciaService.getId(id).then(function (data) {
-                        $scope.dependencia = data;
-                    });
-                }
             } else {
                 dependenciaService.getAll().then(function (data) {
                     $scope.dependencias = data;

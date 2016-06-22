@@ -14,6 +14,7 @@
 
                     rel.recurso['cantidad'] = rel.cantidadR;
                     rel.recurso['capacidad'] = rel.capacidad;
+                    rel.recurso['produce'] = rel.produccionXTiempo;
 
                     recursoArray.push(rel.recurso);
                 }
