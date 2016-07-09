@@ -13,47 +13,59 @@
       <div class="clearfix"></div>
     </div>
     <div class="x_content">
-      <br>
-      <form id="form-recurso" name="formRecurso" novalidate class="form-horizontal form-label-left" ng-submit="formRecurso.$valid && add()">
-        <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre">Nombre <span class="required">*</span></label>
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <input type="text" id="nombre" required="required" class="form-control col-md-7 col-xs-12" data-parsley-id="nombre" ng-model="recurso.nombre">
-            <ul class="parsley-errors-list" id="parsley-id-nombre"></ul>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="descripcion">Descripción</label>
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <textarea name="descripcion" id="descripcion" class="form-control col-md-7 col-xs-12" ng-model="recurso.descripcion"></textarea>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="cantInicial">Cantidad inicial <span class="required">*</span></label>
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <input type="number" name="cantInicial" id="cantInicial" required="required" class="form-control col-md-7 col-xs-12" ng-model="recurso.cantInicial" />
-          </div>
-        </div>
-          <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="capacidadInicial">Capacidad inicial <span class="required">*</span></label>
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="number" name="capacidadInicial" id="capacidadInicial" required="required" class="form-control col-md-7 col-xs-12" ng-model="recurso.capacidadInicial" />
+      <div class="row">
+          <form id="form-recurso" name="formRecurso" novalidate class="form-horizontal form-label-left" ng-submit="formRecurso.$valid && add()">
+              <div class="col-md-3 col-xs-12">
+                  <div class="form-group">
+                      <img class="img-responsive" src="http://placehold.it/242x200&amp;text=Imagen" id="preview" width="242" height="200" />
+                  </div>
+                  <div class="form-group">
+                    <input title="Subir Imagen" type="file" accept="image/*" name="imagen" id="imagen">
+                  </div>
               </div>
-          </div>
-          <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="produccionXTiempo">Produccion inicial por hora<span class="required">*</span></label>
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="number" name="produccionXTiempo" id="produccionXTiempo" required="required" class="form-control col-md-7 col-xs-12" ng-model="recurso.produccionXTiempo" />
+              <div class="col-md-9 col-xs-12">
+                  <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre">Nombre <span class="required">*</span></label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="nombre" required="required" class="form-control col-md-7 col-xs-12" data-parsley-id="nombre" ng-model="recurso.nombre">
+                          <ul class="parsley-errors-list" id="parsley-id-nombre"></ul>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="descripcion">Descripción</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                          <textarea name="descripcion" id="descripcion" class="form-control col-md-7 col-xs-12" ng-model="recurso.descripcion"></textarea>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="cantInicial">Cantidad inicial <span class="required">*</span></label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" name="cantInicial" id="cantInicial" required="required" class="form-control col-md-7 col-xs-12" ng-model="recurso.cantInicial" />
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="capacidadInicial">Capacidad inicial <span class="required">*</span></label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" name="capacidadInicial" id="capacidadInicial" required="required" class="form-control col-md-7 col-xs-12" ng-model="recurso.capacidadInicial" />
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="produccionXTiempo">Produccion inicial por hora<span class="required">*</span></label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" name="produccionXTiempo" id="produccionXTiempo" required="required" class="form-control col-md-7 col-xs-12" ng-model="recurso.produccionXTiempo" />
+                      </div>
+                  </div>
+                </div>
+              <div class="col-md-12">
+                  <div class="form-group">
+                      <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                          <a href="#/recurso" class="btn btn-primary">Cancelar</a>
+                          <button class="btn btn-success" ng-disabled="saving">Guardar</button>
+                      </div>
+                  </div>
               </div>
-          </div>
-        <div class="ln_solid"></div>
-        <div class="form-group">
-          <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-            <a href="#/recurso" class="btn btn-primary">Cancelar</a>
-            <button class="btn btn-success" ng-disabled="saving">Guardar</button>
-          </div>
+            </form>
         </div>
-      </form>
     </div>
   </div>
 </div>
@@ -75,6 +87,16 @@
         $('.bs-callout-warning').removeClass('hidden');
       }
     };
+
+    $('#imagen').on('change', function () {
+        var image = document.getElementById("imagen").files[0];
+        oFReader = new FileReader();
+        oFReader.readAsDataURL(image);
+        document.getElementById("preview").src = '';
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("preview").src = oFREvent.target.result;
+        }
+    });
   });
 </script>
 <!-- /form validation -->

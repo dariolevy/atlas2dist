@@ -13,203 +13,221 @@
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-            <br>
-            <form id="form-destacamento" name="formDestacamento" novalidate class="form-horizontal form-label-left" ng-submit="formDestacamento.$valid && add()">
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre">
-                        Nombre <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" id="nombre" required="required" class="form-control col-md-7 col-xs-12" data-parsley-id="nombre" ng-model="destacamento.nombre">
-                        <ul class="parsley-errors-list" id="parsley-id-nombre"></ul>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="descripcion">Descripción</label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <textarea name="descripcion" id="descripcion" class="form-control col-md-7 col-xs-12" ng-model="destacamento.descripcion"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ataque">
-                        Ataque
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="number" id="ataque" class="form-control col-md-7 col-xs-12" ng-model="destacamento.ataque">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="escudo">
-                        Escudo
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="number" id="escudo" class="form-control col-md-7 col-xs-12" ng-model="destacamento.escudo">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="efectividadAtaque">
-                        Efectividad de Ataque
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="number" id="efectividadAtaque" class="form-control col-md-7 col-xs-12" ng-model="destacamento.efectividadAtaque">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="vida">
-                        Vida
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="number" id="vida" class="form-control col-md-7 col-xs-12" ng-model="destacamento.vida">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="velocidad">
-                        Velocidad
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="number" id="velocidad" class="form-control col-md-7 col-xs-12" ng-model="destacamento.velocidad">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tiempoInicial">Tiempo inicial de construccion</label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="number" id="destacamento" class="form-control col-md-7 col-xs-12" ng-model="destacamento.tiempoInicial">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="incrementoTiempo">
-                        Incremento de tiempo por nivel
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="number" id="incrementoTiempo" class="form-control col-md-7 col-xs-12" ng-model="destacamento.incrementoTiempo">
-                    </div>
-                </div>
-                <div class="ln_solid"></div>
-                <div class="form-group">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <h3> Costo </h3>
-                    </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 form-inline" style="margin-top:10px;" ng-if="recursosCosto.length > 0">
+            <div class="row">
+                <form id="form-destacamento" name="formDestacamento" novalidate class="form-horizontal form-label-left" ng-submit="formDestacamento.$valid && add()">
+                    <div class="col-md-3 col-xs-12">
                         <div class="form-group">
-                            <label>Recurso</label>
-                            <select class="form-control" ng-model="costo.recurso">
-                                <option ng-repeat="recurso in recursosCosto" value="{{recurso.id}}">{{recurso.nombre}}</option>
-                            </select>
+                            <img class="img-responsive" src="http://placehold.it/242x200&amp;text=Imagen" id="preview" width="242" height="200" />
                         </div>
                         <div class="form-group">
-                            <label>Valor</label>
-                            <input type="number" class="form-control" ng-model="costo.valor">
+                            <input title="Subir Imagen" type="file" accept="image/*" name="imagen" id="imagen">
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre">
+                                Nombre <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" id="nombre" required="required" class="form-control col-md-7 col-xs-12" data-parsley-id="nombre" ng-model="destacamento.nombre">
+                                <ul class="parsley-errors-list" id="parsley-id-nombre"></ul>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label>Incremento de nivel</label>
-                            <input type="number" step="0,01" class="form-control" ng-model="costo.incrementoNivel">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="descripcion">Descripción</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <textarea name="descripcion" id="descripcion" class="form-control col-md-7 col-xs-12" ng-model="destacamento.descripcion"></textarea>
+                            </div>
                         </div>
-                        <a class="btn btn-default" style="margin:0;" ng-click="addRelation('costo')"><i class="fa fa-plus"></i></a>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ataque">
+                                Ataque
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="number" id="ataque" class="form-control col-md-7 col-xs-12" ng-model="destacamento.ataque">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="escudo">
+                                Escudo
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="number" id="escudo" class="form-control col-md-7 col-xs-12" ng-model="destacamento.escudo">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="efectividadAtaque">
+                                Efectividad de Ataque
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="number" id="efectividadAtaque" class="form-control col-md-7 col-xs-12" ng-model="destacamento.efectividadAtaque">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="vida">
+                                Vida
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="number" id="vida" class="form-control col-md-7 col-xs-12" ng-model="destacamento.vida">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="velocidad">
+                                Velocidad
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="number" id="velocidad" class="form-control col-md-7 col-xs-12" ng-model="destacamento.velocidad">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tiempoInicial">Tiempo inicial de construccion</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="number" id="destacamento" class="form-control col-md-7 col-xs-12" ng-model="destacamento.tiempoInicial">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="incrementoTiempo">
+                                Incremento de tiempo por nivel
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="number" id="incrementoTiempo" class="form-control col-md-7 col-xs-12" ng-model="destacamento.incrementoTiempo">
+                            </div>
+                        </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <h3> Costo </h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-inline" style="margin-top:10px;" ng-if="recursosCosto.length > 0">
+                                <div class="form-group">
+                                    <label>Recurso</label>
+                                    <select class="form-control" ng-model="costo.recurso">
+                                        <option ng-repeat="recurso in recursosCosto" value="{{recurso.id}}">{{recurso.nombre}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Valor</label>
+                                    <input type="number" class="form-control" ng-model="costo.valor">
+                                </div>
+                                <div class="form-group">
+                                    <label>Incremento de nivel</label>
+                                    <input type="number" step="0,01" class="form-control" ng-model="costo.incrementoNivel">
+                                </div>
+                                <a class="btn btn-default" style="margin:0;" ng-click="addRelation('costo')"><i class="fa fa-plus"></i></a>
+                            </div>
 
-                    <div class="col-md-12 col-sm-12 col-xs-12 form-inline" ng-repeat="c in costos" style="margin-top:10px;">
-                        <div class="form-group">
-                            <label>Recurso</label>
-                            <input type="text" class="form-control" value="{{c.nombreRecurso}}" disabled="disabled">
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-inline" ng-repeat="c in costos" style="margin-top:10px;">
+                                <div class="form-group">
+                                    <label>Recurso</label>
+                                    <input type="text" class="form-control" value="{{c.nombreRecurso}}" disabled="disabled">
+                                </div>
+                                <div class="form-group">
+                                    <label>Valor</label>
+                                    <input type="text" class="form-control" value="{{c.valor}}" disabled="disabled">
+                                </div>
+                                <div class="form-group">
+                                    <label>Incremento de nivel</label>
+                                    <input type="text" class="form-control" value="{{c.incrementoNivel}}" disabled="disabled">
+                                </div>
+                                <a class="btn btn-default" style="margin:0;" ng-click="removeRelation('costo', $index)"><i class="fa fa-remove"></i></a>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Valor</label>
-                            <input type="text" class="form-control" value="{{c.valor}}" disabled="disabled">
-                        </div>
-                        <div class="form-group">
-                            <label>Incremento de nivel</label>
-                            <input type="text" class="form-control" value="{{c.incrementoNivel}}" disabled="disabled">
-                        </div>
-                        <a class="btn btn-default" style="margin:0;" ng-click="removeRelation('costo', $index)"><i class="fa fa-remove"></i></a>
                     </div>
-                </div>
-                <div class="ln_solid"></div>
-                <div class="form-group">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <h3> Capacidad </h3>
-                    </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 form-inline" style="margin-top:10px;" ng-if="recursosCapacidad.length > 0">
+                    <div class="col-md-12">
+                        <div class="ln_solid"></div>
                         <div class="form-group">
-                            <label>Recurso</label>
-                            <select class="form-control" ng-model="capacidad.recurso">
-                                <option ng-repeat="recurso in recursosCapacidad" value="{{recurso.id}}">{{recurso.nombre}}</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Valor</label>
-                            <input type="number" class="form-control" ng-model="capacidad.valor">
-                        </div>
-                        <div class="form-group">
-                            <label>Incremento de nivel</label>
-                            <input type="number" step="0,01" class="form-control" ng-model="capacidad.incrementoNivel">
-                        </div>
-                        <a class="btn btn-default" style="margin:0;" ng-click="addRelation('capacidad')"><i class="fa fa-plus"></i></a>
-                    </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <h3> Capacidad </h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-inline" style="margin-top:10px;" ng-if="recursosCapacidad.length > 0">
+                                <div class="form-group">
+                                    <label>Recurso</label>
+                                    <select class="form-control" ng-model="capacidad.recurso">
+                                        <option ng-repeat="recurso in recursosCapacidad" value="{{recurso.id}}">{{recurso.nombre}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Valor</label>
+                                    <input type="number" class="form-control" ng-model="capacidad.valor">
+                                </div>
+                                <div class="form-group">
+                                    <label>Incremento de nivel</label>
+                                    <input type="number" step="0,01" class="form-control" ng-model="capacidad.incrementoNivel">
+                                </div>
+                                <a class="btn btn-default" style="margin:0;" ng-click="addRelation('capacidad')"><i class="fa fa-plus"></i></a>
+                            </div>
 
-                    <div class="col-md-12 col-sm-12 col-xs-12 form-inline" ng-repeat="ca in capacidades" style="margin-top:10px;">
-                        <div class="form-group">
-                            <label>Recurso</label>
-                            <input type="text" class="form-control" value="{{ca.nombreRecurso}}" disabled="disabled">
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-inline" ng-repeat="ca in capacidades" style="margin-top:10px;">
+                                <div class="form-group">
+                                    <label>Recurso</label>
+                                    <input type="text" class="form-control" value="{{ca.nombreRecurso}}" disabled="disabled">
+                                </div>
+                                <div class="form-group">
+                                    <label>Valor</label>
+                                    <input type="text" class="form-control" value="{{ca.valor}}" disabled="disabled">
+                                </div>
+                                <div class="form-group">
+                                    <label>Incremento de nivel</label>
+                                    <input type="text" class="form-control" value="{{ca.incrementoNivel}}" disabled="disabled">
+                                </div>
+                                <a class="btn btn-default" style="margin:0;" ng-click="removeRelation('capacidad', $index)"><i class="fa fa-remove"></i></a>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Valor</label>
-                            <input type="text" class="form-control" value="{{ca.valor}}" disabled="disabled">
-                        </div>
-                        <div class="form-group">
-                            <label>Incremento de nivel</label>
-                            <input type="text" class="form-control" value="{{ca.incrementoNivel}}" disabled="disabled">
-                        </div>
-                        <a class="btn btn-default" style="margin:0;" ng-click="removeRelation('capacidad', $index)"><i class="fa fa-remove"></i></a>
                     </div>
-                </div>
-                <div class="ln_solid"></div>
-                <div class="form-group">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <h3> Produce </h3>
-                    </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 form-inline" style="margin-top:10px;" ng-if="recursosProduce.length > 0">
+                    <div class="col-md-12">
+                        <div class="ln_solid"></div>
                         <div class="form-group">
-                            <label>Recurso</label>
-                            <select class="form-control" ng-model="produce.recurso">
-                                <option ng-repeat="recurso in recursosProduce" value="{{recurso.id}}">{{recurso.nombre}}</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Valor</label>
-                            <input type="number" class="form-control" ng-model="produce.valor">
-                        </div>
-                        <div class="form-group">
-                            <label>Incremento de nivel</label>
-                            <input type="number" step="0,01" class="form-control" ng-model="produce.incrementoNivel">
-                        </div>
-                        <a class="btn btn-default" style="margin:0;" ng-click="addRelation('produce')"><i class="fa fa-plus"></i></a>
-                    </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <h3> Produce </h3>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-inline" style="margin-top:10px;" ng-if="recursosProduce.length > 0">
+                                <div class="form-group">
+                                    <label>Recurso</label>
+                                    <select class="form-control" ng-model="produce.recurso">
+                                        <option ng-repeat="recurso in recursosProduce" value="{{recurso.id}}">{{recurso.nombre}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Valor</label>
+                                    <input type="number" class="form-control" ng-model="produce.valor">
+                                </div>
+                                <div class="form-group">
+                                    <label>Incremento de nivel</label>
+                                    <input type="number" step="0,01" class="form-control" ng-model="produce.incrementoNivel">
+                                </div>
+                                <a class="btn btn-default" style="margin:0;" ng-click="addRelation('produce')"><i class="fa fa-plus"></i></a>
+                            </div>
 
-                    <div class="col-md-12 col-sm-12 col-xs-12 form-inline" ng-repeat="p in producen" style="margin-top:10px;">
-                        <div class="form-group">
-                            <label>Recurso</label>
-                            <input type="text" class="form-control" value="{{p.nombreRecurso}}" disabled="disabled">
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-inline" ng-repeat="p in producen" style="margin-top:10px;">
+                                <div class="form-group">
+                                    <label>Recurso</label>
+                                    <input type="text" class="form-control" value="{{p.nombreRecurso}}" disabled="disabled">
+                                </div>
+                                <div class="form-group">
+                                    <label>Valor</label>
+                                    <input type="text" class="form-control" value="{{p.valor}}" disabled="disabled">
+                                </div>
+                                <div class="form-group">
+                                    <label>Incremento de nivel</label>
+                                    <input type="text" class="form-control" value="{{p.incrementoNivel}}" disabled="disabled">
+                                </div>
+                                <a class="btn btn-default" style="margin:0;" ng-click="removeRelation('produce', $index)"><i class="fa fa-remove"></i></a>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Valor</label>
-                            <input type="text" class="form-control" value="{{p.valor}}" disabled="disabled">
-                        </div>
-                        <div class="form-group">
-                            <label>Incremento de nivel</label>
-                            <input type="text" class="form-control" value="{{p.incrementoNivel}}" disabled="disabled">
-                        </div>
-                        <a class="btn btn-default" style="margin:0;" ng-click="removeRelation('produce', $index)"><i class="fa fa-remove"></i></a>
                     </div>
-                </div>
-                <div class="ln_solid"></div>
+                    <div class="col-md-12">
 
-                <div class="form-group">
-                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                        <a href="#/destacamento" class="btn btn-primary">Cancelar</a>
-                        <button class="btn btn-success" ng-disabled="saving">Guardar</button>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <a href="#/destacamento" class="btn btn-primary">Cancelar</a>
+                                <button class="btn btn-success" ng-disabled="saving">Guardar</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </div>
@@ -231,6 +249,16 @@
         $('.bs-callout-warning').removeClass('hidden');
       }
     };
+
+    $('#imagen').on('change', function () {
+        var image = document.getElementById("imagen").files[0];
+        oFReader = new FileReader();
+        oFReader.readAsDataURL(image);
+        document.getElementById("preview").src = '';
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("preview").src = oFREvent.target.result;
+        }
+    });
   });
 </script>
 <!-- /form validation -->

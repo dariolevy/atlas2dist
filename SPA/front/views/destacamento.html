@@ -7,7 +7,7 @@
             <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="unidad in destacamentos">
                 <div class="box box-primary">
                     <div class="box-body box-profile">
-                        <img class="img-responsive" src="http://lorempixel.com/300/150/abstract" width="300" height="150">
+                        <img class="img-responsive" <img src="/Content/upload/{{unidad.foto}}" width="242" height="200">
                         <h3 class="profile-username text-center">{{unidad.nombre}}</h3>
                         <p><div class="bg-aqua disabled color-palette text-center">Cantidad: {{unidad.cantidad}}</div></p>
                         <p class="text-blue text-center" ng-if="unidad.enConstruccion">En construcci&oacute;n...</p>

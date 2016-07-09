@@ -56,7 +56,14 @@
                 return;
             }
 
-            destacamentoService.add(destacamento).then(
+            var file = $('#imagen')[0].files[0];
+            if (!file) {
+                $scope.saving = false;
+                mostrarNotificacion('error', 'Debe seleccionar una imagen.');
+                return;
+            }
+
+            destacamentoService.add(destacamento, file).then(
                 function (destacamentoData) {
                     $scope.saving = false;
 

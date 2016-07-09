@@ -46,7 +46,7 @@
         }
 
         $scope.add = function () {
-            $scope.saving = true;
+            
             var edificio = this.edificio;
 
             if (!$scope.costos.length) {
@@ -56,7 +56,14 @@
                 return;
             }
 
-            edificioService.add(edificio).then(
+            var file = $('#imagen')[0].files[0];
+            if (!file) {
+                $scope.saving = false;
+                mostrarNotificacion('error', 'Debe seleccionar una imagen.');
+                return;
+            }
+
+            edificioService.add(edificio, file).then(
                 function (edificioData) {
                     $scope.saving = false;
 

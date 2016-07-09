@@ -51,7 +51,7 @@
 
                     <tr ng-repeat="investigacion in investigaciones | filter:buscador">
                         <td>{{investigacion.id}}</td>
-                        <td>{{investigacion.foto}}</td>
+                        <td class="chat"><div class="item"><img src="/Content/upload/{{investigacion.foto}}" width="50" height="50" /></div></td>
                         <td>{{investigacion.nombre}}</td>
                         <td>{{investigacion.descripcion}}</td>
                         <td>

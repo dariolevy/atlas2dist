@@ -18,15 +18,40 @@
             return defer.promise;
         };
 
-        var add = function (edificio) {
+        var subirImagen = function (file) {
             var defer = $q.defer();
 
-            $http.post('/api/edificio', edificio)
-            .success(function (edificio) {
-                defer.resolve(edificio);
+            var fd = new FormData();
+            fd.append('file', file);
+            $http.post('/api/imagenes', fd, {
+                transformRequest: angular.identity,
+                headers: { 'Content-Type': undefined },
+            })
+            .success(function (response) {
+                defer.resolve(response);
             })
             .error(function () {
                 defer.reject('server error')
+            });
+
+            return defer.promise;
+        }
+
+        var add = function (edificio, file) {
+            var defer = $q.defer();
+
+            subirImagen(file).then(function (imagen) {
+                edificio.foto = imagen;
+
+                console.log(imagen)
+
+                $http.post('/api/edificio', edificio)
+                .success(function (edificio) {
+                    defer.resolve(edificio);
+                })
+                .error(function () {
+                    defer.reject('server error')
+                });
             });
 
             return defer.promise;

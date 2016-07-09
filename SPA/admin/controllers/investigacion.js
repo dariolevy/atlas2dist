@@ -56,7 +56,14 @@
                 return;
             }
 
-            investigacionService.add(investigacion).then(
+            var file = $('#imagen')[0].files[0];
+            if (!file) {
+                $scope.saving = false;
+                mostrarNotificacion('error', 'Debe seleccionar una imagen.');
+                return;
+            }
+
+            investigacionService.add(investigacion, file).then(
                 function (investigacionData) {
                     $scope.saving = false;
 

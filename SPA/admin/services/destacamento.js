@@ -18,15 +18,37 @@
             return defer.promise;
         };
 
-        var add = function (destacamento) {
+        var subirImagen = function (file) {
             var defer = $q.defer();
 
-            $http.post('/api/destacamento', destacamento)
-            .success(function (destacamento) {
-                defer.resolve(destacamento);
+            var fd = new FormData();
+            fd.append('file', file);
+            $http.post('/api/imagenes', fd, {
+                transformRequest: angular.identity,
+                headers: { 'Content-Type': undefined },
+            })
+            .success(function (response) {
+                defer.resolve(response);
             })
             .error(function () {
                 defer.reject('server error')
+            });
+
+            return defer.promise;
+        }
+
+        var add = function (destacamento, file) {
+            var defer = $q.defer();
+
+            subirImagen(file).then(function (imagen) {
+                destacamento.foto = imagen;
+                $http.post('/api/destacamento', destacamento)
+                .success(function (destacamento) {
+                    defer.resolve(destacamento);
+                })
+                .error(function () {
+                    defer.reject('server error')
+                });
             });
 
             return defer.promise;

@@ -19,12 +19,19 @@
                 });
             }
         }
+        
+        $scope.add = function () {
+            $scope.saving = true;
+            var recurso = this.recurso;
 
-        $scope.add = function(){
-            $scope.saving   = true;
-            var recurso     = this.recurso;
+            var file = $('#imagen')[0].files[0];
+            if (!file) {
+                $scope.saving = false;
+                mostrarNotificacion('error', 'Debe seleccionar una imagen.');
+                return;
+            }
 
-            recursoService.add(recurso).then(
+            recursoService.add(recurso, file).then(
                 function (data) {
                     $scope.saving = false;
                 
@@ -77,16 +84,15 @@
             }
         }
 
-        var mostrarNotificacion = function(tipo){
-            var title   = '';
-            var text    = '';
+        var mostrarNotificacion = function(tipo, text){
+            var title = '';
 
             if(tipo == 'success'){
                 var title   = 'Exito!';
-                var text    = 'Acción realizada con exito.';
+                var text    = text || 'Acción realizada con exito.';
             }else if(tipo == 'error'){
                 var title   = 'Oh No!';
-                var text    = 'Ha ocurrido un error.';
+                var text    = text || 'Ha ocurrido un error.';
             }
 
             new PNotify({

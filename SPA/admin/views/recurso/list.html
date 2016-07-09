@@ -48,7 +48,7 @@
 
           <tr ng-repeat="recurso in recursos | filter:buscador">
             <td>{{recurso.id}}</td>
-            <td>{{recurso.foto}}</td>
+            <td class="chat"><div class="item"><img src="/Content/upload/{{recurso.foto}}" width="50" height="50"/></div></td>
             <td>{{recurso.nombre}}</td>
             <td>{{recurso.descripcion}}</td>
             <td>{{recurso.cantInicial}}</td>

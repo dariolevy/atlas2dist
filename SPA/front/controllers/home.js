@@ -19,9 +19,11 @@
                 for (var r in jugadorEdificio) {
                     var rel = jugadorEdificio[r];
 
+                    console.log(rel)
+
                     var construccion = {
                         nombre: rel.edificio.nombre,
-                        mensaje: 'Subiendo al nivel ' + rel.nivelE++,
+                        mensaje: 'Subiendo al nivel ' + (rel.nivelE + 1),
                         finaliza: 'Finaliza ' + moment(rel.finalizaConstruccion).format('DD/MM/YYYY hh:mm:ss')
                     }
 
@@ -57,7 +59,7 @@
 
                     var construccion = {
                         nombre: rel.investigacion.nombre,
-                        mensaje: 'Subiendo al nivel ' + rel.nivel++,
+                        mensaje: 'Subiendo al nivel ' + (rel.nivel +1),
                         finaliza: 'Finaliza ' + moment(rel.finalizaConstruccion).format('DD/MM/YYYY hh:mm:ss')
                     }
 
