@@ -51,7 +51,7 @@
 
                     <tr ng-repeat="edificio in edificios | filter:buscador">
                         <td>{{edificio.id}}</td>
-                        <td class="chat"><div class="item"><img src="/Content/upload/{{edificio.foto}}" width="50" height="50" /></div></td>
+                        <td class="chat"><div class="item"><img ng-src="/Content/upload/{{edificio.foto}}" width="50" height="50" /></div></td>
                         <td>{{edificio.nombre}}</td>
                         <td>{{edificio.descripcion}}</td>
                         <td>

@@ -1,8 +1,8 @@
 (function () {
     'use strict';
-    angular.module('atlas2-juego').controller('destacamentoCtrl', ['$scope', 'jugadorDestacamentoService', 'coloniaFactory', destacamentoCtrl]);
+    angular.module('atlas2-juego').controller('destacamentoCtrl', ['$scope', 'jugadorDestacamentoService', 'coloniaFactory','toastr', destacamentoCtrl]);
 
-    function destacamentoCtrl($scope, jugadorDestacamentoService, coloniaFactory) {
+    function destacamentoCtrl($scope, jugadorDestacamentoService, coloniaFactory, toastr) {
         $scope.destacamentos = null;
         $scope.destacamento = null;
         $scope.showLoading = null;
@@ -54,6 +54,7 @@
                         destacamento.enConstruccion = true;
                     }, function () {
                         $scope.showLoading = null;
+                        toastr.error("Recursos insuficientes");
                     }
                 );
             }, 2000);

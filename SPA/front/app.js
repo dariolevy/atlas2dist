@@ -1,11 +1,16 @@
 ﻿(function () {
 
-    angular.module('atlas2-juego', ['ngRoute', 'firebase']);
+    angular.module('atlas2-juego', ['ngRoute', 'firebase', 'toastr']);
 
-    angular.module('atlas2-juego').config(['$routeProvider', configFunction]);
+    angular.module('atlas2-juego').config(['$routeProvider', 'toastrConfig', configFunction]);
 
     /*@ngInject*/
-    function configFunction($routeProvider) {
+    function configFunction($routeProvider, toastrConfig) {
+        angular.extend(toastrConfig, {
+            positionClass: 'toast-top-center',
+            timeOut : 2500
+        });
+
         // Routes
         $routeProvider.when('/', {
             templateUrl: '/SPA/front/views/home.html',

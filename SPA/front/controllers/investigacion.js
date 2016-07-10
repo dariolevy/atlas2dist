@@ -1,8 +1,8 @@
 (function () {
     'use strict';
-    angular.module('atlas2-juego').controller('investigacionCtrl', ['$scope', '$filter', 'jugadorInvestigacionService', 'coloniaFactory', investigacionCtrl]);
+    angular.module('atlas2-juego').controller('investigacionCtrl', ['$scope', '$filter', 'jugadorInvestigacionService', 'coloniaFactory', 'toastr', investigacionCtrl]);
 
-    function investigacionCtrl($scope, $filter, jugadorInvestigacionService, coloniaFactory) {
+    function investigacionCtrl($scope, $filter, jugadorInvestigacionService, coloniaFactory, toastr) {
         $scope.investigaciones = null;
         $scope.investigacion = null;
         $scope.showLoading = null;
@@ -52,6 +52,7 @@
                         investigacion.enConstruccion = true;
                     }, function () {
                         $scope.showLoading = null;
+                        toastr.error("Recursos insuficientes");
                     }
                 );
             }, 2000);

@@ -5,16 +5,16 @@
     {
         @Html.AntiForgeryToken()
         <ul class="nav navbar-nav navbar-right" style="margin-right:15px;">
+
             <li class="dropdown user user-menu">
                 <a class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa  fa-user"></i>
                     <span class="hidden-xs">@User.Identity.GetUserName()</span>
                 </a>
                 <ul class="dropdown-menu">
                     <!-- User image -->
                     <li class="user-header" style="height:initial;">
-                        <p>
-                            @User.Identity.GetUserName()
-                        </p>
+                        <p>@User.Identity.GetUserName()</p>
                     </li>
                     <!-- Menu Footer-->
                     <li class="user-footer">
@@ -22,7 +22,7 @@
                             @Html.ActionLink("Profile", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
                         </div>*@
                         <div class="pull-right">
-                            <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+                            <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-default btn-flat">Logout</a>
                         </div>
                     </li>
                 </ul>

@@ -19,8 +19,6 @@
                 for (var r in jugadorEdificio) {
                     var rel = jugadorEdificio[r];
 
-                    console.log(rel)
-
                     var construccion = {
                         nombre: rel.edificio.nombre,
                         mensaje: 'Subiendo al nivel ' + (rel.nivelE + 1),

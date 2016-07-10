@@ -1,8 +1,8 @@
 (function () {
     'use strict';
-    angular.module('atlas2-juego').controller('edificioCtrl', ['$scope', '$filter', 'jugadorEdificioService', 'coloniaFactory', edificioCtrl]);
+    angular.module('atlas2-juego').controller('edificioCtrl', ['$scope', '$filter', 'jugadorEdificioService', 'coloniaFactory', 'toastr', edificioCtrl]);
 
-    function edificioCtrl($scope, $filter, jugadorEdificioService, coloniaFactory) {
+    function edificioCtrl($scope, $filter, jugadorEdificioService, coloniaFactory, toastr) {
         $scope.edificios = null;
         $scope.edificio = null;
         $scope.showLoading = null;
@@ -45,7 +45,7 @@
 
         $scope.subirNivel = function (edificio) {
             $scope.showLoading = edificio.id;
-            
+
             setTimeout(function () {
                 jugadorEdificioService.subirNivel(edificio.relId).then(
                     function (data) {
@@ -53,6 +53,7 @@
                         edificio.enConstruccion = true;
                     }, function () {
                         $scope.showLoading = null;
+                        toastr.error("Recursos insuficientes");
                     }
                 );
             }, 2000);

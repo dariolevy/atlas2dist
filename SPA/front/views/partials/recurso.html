@@ -1,13 +1,12 @@
 <div class="info-box bg-navy">
-    <span class="info-box-icon"><i class="fa fa-leaf"></i></span>
+    <span class="info-box-icon">
+        <img ng-src="/Content/upload/{{recurso.foto}}" style="vertical-align:initial; height:100%">
+    </span>
     <div class="info-box-content">
-      <span class="info-box-text">{{recurso.nombre}} <i class="pull-right fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="Producci&oacute;n por hora: {{recurso.produce}}"></i></span>
+      <span class="info-box-text">{{recurso.nombre}} <i class="pull-right fa fa-info-circle" data-toggle="tooltip" data-placement="bottom" title="{{recurso.cantidad}} de {{recurso.capacidad}} | {{recurso.produce}} por hora"></i></span>
       <span class="info-box-number">{{recurso.cantidad}}</span>
       <div class="progress">
           <div class="progress-bar" style="width: {{(100 * recurso.cantidad) / recurso.capacidad}}%"></div>
       </div>
-      <span class="progress-description">
-        {{recurso.cantidad}} de {{recurso.capacidad}} <br />
-      </span>
     </div>
 </div>

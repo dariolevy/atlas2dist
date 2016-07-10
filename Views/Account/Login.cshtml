@@ -18,10 +18,10 @@
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    @Html.LabelFor(m => m.LoginViewModel.Email, new { @class = "col-md-2 control-label" })
+                    @Html.LabelFor(m => m.LoginViewModel.Usuario, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.LoginViewModel.Email, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.LoginViewModel.Email, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.LoginViewModel.Usuario, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.LoginViewModel.Usuario, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
@@ -29,14 +29,6 @@
                     <div class="col-md-10">
                         @Html.PasswordFor(m => m.LoginViewModel.Password, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.LoginViewModel.Password, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.LoginViewModel.RememberMe)
-                            @Html.LabelFor(m => m.LoginViewModel.RememberMe)
-                        </div>
                     </div>
                 </div>
             </div>

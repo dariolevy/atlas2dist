@@ -21,6 +21,8 @@
     <!-- AdminLTE Skins -->
     <link rel="stylesheet" href="~/Content/front/css/skins/skin-blue.css">
 
+    <link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css" />
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -33,6 +35,11 @@
     <style type="text/css">
         .direct-chat-messages{
             height : 500px;
+        }
+
+        .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+            margin: 0 auto;
+            height: 128px;
         }
 
        @Model.Configuracion.css
@@ -97,7 +104,7 @@
             <!-- Main content -->
             <section class="content">
                 <div class="row">
-                    <div ng-repeat="recurso in recursos" class="col-md-{{12 / recursos.length | number}} col-xs-12">
+                    <div ng-repeat="recurso in recursos" class="col-md-{{12 / recursos.length | number:0}} col-xs-12">
                         <atlas2-recurso ></atlas2-recurso>
                     </div>
                 </div>
@@ -124,6 +131,7 @@
     <script src="~/Scripts/front/js/firebase.js"></script>
     <script src="~/Scripts/front/js/angularfire.min.js"></script>
     <script src="~/Scripts/front/js/moment.js"></script>
+    <script src="~/Scripts/front/js/angular-toastr.js"></script>
 
     <!-- jQuery 2.2.0 -->
     <script src="~/Scripts/front/plugins/jQuery/jQuery-2.2.0.min.js"></script>

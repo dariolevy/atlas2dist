@@ -18,6 +18,10 @@ $(function () {
         } else {
             $li.parent().find('li').removeClass('active');
             $li.addClass('active');
+
+            if ($('body').hasClass('sidebar-open')) {
+                $('.sidebar-toggle').click();
+            }
         }
     });
 
