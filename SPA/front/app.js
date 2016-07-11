@@ -6,8 +6,8 @@
 
     /*@ngInject*/
     function configFunction($routeProvider, toastrConfig, $httpProvider) {
-        $httpProvider.defaults.withCredentials = true;
-
+        //$httpProvider.defaults.withCredentials = true;
+        
         angular.extend(toastrConfig, {
             positionClass: 'toast-top-center',
             timeOut : 2500

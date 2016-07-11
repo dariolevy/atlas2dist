@@ -6,6 +6,7 @@
         var receiverId = $routeParams && $routeParams['receiverId'] ? $routeParams['receiverId'] : null;
         var interaccion = $routeParams && $routeParams['interaccion'] ? $routeParams['interaccion'] : null;
 
+        $scope.showLoading = false;
         $scope.interaccionNombre = interaccion ? interaccion.charAt(0).toUpperCase() + $routeParams['interaccion'].slice(1) : null;
 
         $scope.destacamentos = null;
@@ -113,6 +114,7 @@
         $scope.ejecutarInteraccion = function () {
             var requester = this.requester;
             var receiver = this.receiver;
+            $scope.showLoading = true;
 
             var reqFlota = [];
             for (var a in requester.flota) {
@@ -166,6 +168,7 @@
 
             interaccionService.ejecutar(int).then(
                 function (data) {
+                    $scope.showLoading = false;
                     $('#mensaje-interaccion').fadeIn();
 
                     setTimeout(function () {
@@ -173,7 +176,7 @@
                         window.location = '#interaccion';
                     }, 1500);
                 }, function () {
-                    
+                    $scope.showLoading = false;
                 }
             );
         }

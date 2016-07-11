@@ -1,6 +1,6 @@
 <div class="box box-primary">
   <div class="box-header">
-    <h1 class="page-header">{{interaccionNombre}}</h1>
+    <h1 class="page-header">{{interaccionNombre}} <small>Usuario seleccionado: {{receiverUsuario.usuario}}</small></h1>
   </div>
   <div class="box-body">
       <div class="callout callout-success" id="mensaje-interaccion" style="display:none;">
@@ -126,6 +126,9 @@
       </div>
   </div>
   <div class="box-footer">
-      <button class="btn btn-success btn-flat btn-lg pull-right" ng-click="ejecutarInteraccion()">Ejecutar</button>
+      <button class="btn btn-success btn-flat btn-lg pull-right" ng-click="ejecutarInteraccion()" ng-disabled="showLoading">Ejecutar</button>
   </div>
+    <div class="overlay" ng-if="showLoading">
+        <i class="fa fa-refresh fa-spin"></i>
+    </div>
 </div>

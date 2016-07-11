@@ -6,7 +6,7 @@
 
     /*@ngInject*/
     function configFunction($routeProvider, $httpProvider) {
-        $httpProvider.defaults.withCredentials = true;
+        //$httpProvider.defaults.withCredentials = true;
 
         // Routes
         $routeProvider.when("/", {
