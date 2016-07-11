@@ -22,14 +22,19 @@
         if (currentMapa) {
             initialize();
         }
+        $scope.getReporte = function (interaccion) {
+            interaccionService.getReporte(interaccion.Id).then(
+                function (reporte) {
+                    $scope.reporte = reporte;
+                    $('#modal-info-interaccion').modal('show');
+                }, function () {
 
-        $scope.detalle = function (interaccion) {
-            $scope.interaccion = interaccion;
-            $('#modal-info-interaccion').modal('show');
-        }
+                }
+            );
+        }; 
 
         $('#modal-info-interaccion').on('hidden.bs.modal', function (e) {
-            $scope.interaccion = null;
+            $scope.reporte = null;
         });
     }
 

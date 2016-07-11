@@ -18,7 +18,7 @@
           </div>
       </div>
   </div>
-  <div class="box-body">
+  <div class="box-body table-responsive">
       <table class="table">
         <thead>
           <tr>
@@ -37,13 +37,8 @@
             <td>{{row.alianza}}</td>
             <td>
               <div class="btn-group" ng-if="!row.classRow && row.jugador">
-                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-zonas"><i class="fa fa-comments"></i></button>
-                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#modal-zonas"><i class="fa fa-user"></i></button>
-                <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-transfer"></i></button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#/interaccion/comercializar/{{row.coloniaId}}">Comercializar</a></li>
-                    <li><a href="#/interaccion/atacar/{{row.coloniaId}}">Atacar</a></li>
-                </ul>
+                  <a href="#/interaccion/comercializar/{{row.coloniaId}}" class="btn btn-sm btn-info btn-flat" title="Comercializar"><i class="fa fa-dollar"></i></a>
+                  <a href="#/interaccion/atacar/{{row.coloniaId}}" class="btn btn-sm btn-success btn-flat" title="Atacar"><i class="fa fa-bolt"></i></a>
               </div>
             </td>
           </tr>
@@ -52,25 +47,3 @@
       <!-- /.table -->
   </div>
 </div>
-
-<div class="modal modal-primary fade" id="modal-zonas">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title">Proximamente</h4>
-            </div>
-            <div class="modal-body">
-                Proximamente se implementaran estas opciones...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->

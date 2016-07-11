@@ -21,6 +21,7 @@
 
                     var construccion = {
                         nombre: rel.edificio.nombre,
+                        foto: rel.edificio.foto,
                         mensaje: 'Subiendo al nivel ' + (rel.nivelE + 1),
                         finaliza: 'Finaliza ' + moment(rel.finalizaConstruccion).format('DD/MM/YYYY hh:mm:ss')
                     }
@@ -39,6 +40,7 @@
 
                     var construccion = {
                         nombre: rel.destacamento.nombre,
+                        foto: rel.destacamento.foto,
                         mensaje: 'Creando nuevas unidades',
                         finaliza: 'Finaliza ' + moment(rel.finalizaConstruccion).format('DD/MM/YYYY hh:mm:ss')
                     }
@@ -57,6 +59,7 @@
 
                     var construccion = {
                         nombre: rel.investigacion.nombre,
+                        foto: rel.investigacion.foto,
                         mensaje: 'Subiendo al nivel ' + (rel.nivel +1),
                         finaliza: 'Finaliza ' + moment(rel.finalizaConstruccion).format('DD/MM/YYYY hh:mm:ss')
                     }

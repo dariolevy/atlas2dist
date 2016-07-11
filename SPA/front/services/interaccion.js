@@ -45,11 +45,24 @@
 
             return defer.promise;
         };
+        var getReporte = function (intId) {
+            var defer = $q.defer();
 
+            $http.get('/api/reporte/' + intId)
+            .success(function (reporte) {
+                defer.resolve(reporte);
+            })
+            .error(function () {
+                defer.reject('server error')
+            });
+
+            return defer.promise;
+        };
         return {
             getConfig: getConfig,
             ejecutar: ejecutar,
-            getInteraccionByColonia: getInteraccionByColonia
+            getInteraccionByColonia: getInteraccionByColonia,
+            getReporte: getReporte
         }
 
     }

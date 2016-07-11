@@ -2,10 +2,12 @@
 
     angular.module('atlas2', ['ngRoute']);
 
-    angular.module('atlas2').config(['$routeProvider', configFunction]);
+    angular.module('atlas2').config(['$routeProvider', '$httpProvider', configFunction]);
 
     /*@ngInject*/
-    function configFunction($routeProvider) {
+    function configFunction($routeProvider, $httpProvider) {
+        $httpProvider.defaults.withCredentials = true;
+
         // Routes
         $routeProvider.when("/", {
             templateUrl : "/SPA/admin/views/dashboard.html",

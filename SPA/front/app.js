@@ -2,10 +2,12 @@
 
     angular.module('atlas2-juego', ['ngRoute', 'firebase', 'toastr']);
 
-    angular.module('atlas2-juego').config(['$routeProvider', 'toastrConfig', configFunction]);
+    angular.module('atlas2-juego').config(['$routeProvider', 'toastrConfig', '$httpProvider', configFunction]);
 
     /*@ngInject*/
-    function configFunction($routeProvider, toastrConfig) {
+    function configFunction($routeProvider, toastrConfig, $httpProvider) {
+        $httpProvider.defaults.withCredentials = true;
+
         angular.extend(toastrConfig, {
             positionClass: 'toast-top-center',
             timeOut : 2500

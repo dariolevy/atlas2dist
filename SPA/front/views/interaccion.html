@@ -7,19 +7,19 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Interaccion</th>
                         <th>Fecha</th>
-                        <th>Jugador</th>
+                        <th>Interaccion</th>
+                        <!--<th>Colonia</th>-->
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="interaccion in interacciones">
-                        <td>{{interaccion.intName}}</td>
                         <td>{{interaccion.Fecha | date:"dd/MM/yyyy hh:mm"}}</td>
-                        <td>{{interaccion.receiverId}}</td>
+                        <td>{{interaccion.intName}}</td>
+                        <!--<td>{{interaccion.receiverId}}</td>-->
                         <td>
-                            <button type="button" class="btn btn-default btn-sm" ng-click="detalle(interaccion)"><i class="fa fa-search"></i></button>
+                            <button type="button" class="btn btn-default btn-sm" ng-click="getReporte(interaccion)"><i class="fa fa-search"></i></button>
                         </td>
                     </tr>
                 </tbody>
@@ -36,13 +36,93 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Proximamente</h4>
+                <h4 class="modal-title">Interacion fecha {{reporte.Fecha | date:"dd/MM/yyyy hh:mm"}}</h4>
             </div>
             <div class="modal-body">
-                Proximamente se implementaran estas opciones...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cerrar</button>
+                <h3>Resumen</h3>
+                <div class="box-body">
+                    <div class="table-responsive mailbox-messages">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Jugador 1</th>
+                                    <th>Jugador 2</th>
+                                    <th>Ganador</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{reporte.requester}}</td>
+                                    <td>{{reporte.receiver}}</td>
+                                    <td>{{reporte.winner}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <h3>Detalle</h3>
+                <div class="box-body" ng-repeat="state in reporte.states | orderBy: 'state'">
+                    <h4 class="text-center">Round: {{$index + 1}}</h4>
+                    <div class="table-responsive table-bordered">
+                        <h5 class="text-center">{{reporte.requester}}</h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Defensa</th>
+                                    <th>Flota</th>
+                                    <th>Recursos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div ng-if="state.req.defensa.length" ng-repeat="defensa in state.req.defensa">{{defensa.destacamento.nombre}} ({{defensa.cantidad}})</div>
+                                        <div ng-if="!state.req.defensa.length">No hay datos</div>
+                                    </td>
+                                    <td>
+                                        <div ng-if="state.req.flota.length" ng-repeat="flota in state.req.flota">{{flota.destacamento.nombre}} ({{flota.cantidad}})</div>
+                                        <div ng-if="!state.req.flota.length">No hay datos</div>
+                                    </td>
+                                    <td>
+                                        <div ng-if="state.req.recursos.length" ng-repeat="recurso in state.req.recursos">{{recurso.recurso.nombre}} ({{recurso.cantidadR}})</div>
+                                        <div ng-if="!state.req.recursos.length">No hay datos</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-responsive table-bordered">
+                        <h5 class="text-center">{{reporte.receiver}}</h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Defensa</th>
+                                    <th>Flota</th>
+                                    <th>Recursos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div ng-if="state.rec.defensa.length" ng-repeat="defensa in state.rec.defensa">{{defensa.destacamento.nombre}} ({{defensa.cantidad}})</div>
+                                        <div ng-if="!state.rec.defensa.length">No hay datos</div>
+                                    </td>
+                                    <td>
+                                        <div ng-if="state.rec.flota.length" ng-repeat="flota in state.rec.flota">{{flota.destacamento.nombre}} ({{flota.cantidad}})</div>
+                                        <div ng-if="!state.rec.flota.length">No hay datos</div>
+                                    </td>
+                                    <td>
+                                        <div ng-if="state.rec.recursos.length" ng-repeat="recurso in state.rec.recursos">{{recurso.recurso.nombre}} ({{recurso.cantidadR}})</div>
+                                        <div ng-if="!state.rec.recursos.length">No hay datos</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cerrar</button>
+                </div>
             </div>
         </div>
     </div>

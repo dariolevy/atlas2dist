@@ -109,7 +109,7 @@
         if (currentMapa) {
             initialize();
         }
-
+        
         $scope.ejecutarInteraccion = function () {
             var requester = this.requester;
             var receiver = this.receiver;
